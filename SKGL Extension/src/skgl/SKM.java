@@ -61,8 +61,6 @@ public class SKM {
 
 	}
 	
-	
-	
 	private static String GetQueryFromMap(Map<String, String> inputParameters)
 	{
 		String output = "";
