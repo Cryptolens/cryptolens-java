@@ -1,4 +1,4 @@
-SKGL-Extension-for-Java
+SKGL Extension for Java
 =======================
 
 This is client API that can be used to access the funtionality of Serial Key Manager Web API.
