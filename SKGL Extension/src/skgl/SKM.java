@@ -3,10 +3,16 @@ package skgl;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -20,6 +26,48 @@ import javax.json.*;
  * @version 1.0
  */
 public class SKM {
+
+	/**
+	 * This method will interpret the input from the dictionary that was returned through "GetParameters" method, if the action was either "activate" or "validate".
+	 * @param parameters The Map array returned in "GetParameters" method.
+	 * @return A Key Information object. 
+	 */
+	public static KeyInformation GetKeyInformationFromParameters(Map<String,String> parameters)
+	{
+		if(parameters.containsKey("error"))
+		{
+			return null;
+		}
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+		
+		boolean[] features = new boolean[8];
+		features[0] = Boolean.parseBoolean(parameters.get("f1"));
+		features[1] = Boolean.parseBoolean(parameters.get("f2"));
+		features[2] = Boolean.parseBoolean(parameters.get("f3"));
+		features[3] = Boolean.parseBoolean(parameters.get("f4"));
+		features[4] = Boolean.parseBoolean(parameters.get("f5"));
+		features[5] = Boolean.parseBoolean(parameters.get("f6"));
+		features[6] = Boolean.parseBoolean(parameters.get("f7"));
+		features[7] = Boolean.parseBoolean(parameters.get("f8"));
+		
+		try
+		{
+			
+			KeyInformation ki = new KeyInformation(df.parse(parameters.get("created")),
+					df.parse(parameters.get("expires")),
+					Integer.parseInt(parameters.get("settime")),
+					Integer.parseInt(parameters.get("timeleft")), 
+					features, parameters.getOrDefault("newkey", ""),
+					parameters.getOrDefault("notes", ""), 
+					parameters.getOrDefault("signature", ""));
+		
+			return ki;
+		
+		}
+		catch(Exception e)
+		{return null;}
+				
+	}
 	
 	/**
 	 * This method will take in a set of parameters (input parameters) and send them to the given action. You can find them here: <a href="http://docs.serialkeymanager.com/web-api/">http://docs.serialkeymanager.com/web-api/</a>. <p>
@@ -76,7 +124,7 @@ public class SKM {
 	// this code was modified.
 	// orginally by @Vikas Gupta.
 	
-	private static Map jsonToMap(JsonObject json) throws JsonException {
+	private static Map jsonToMap(JsonObject json) throws JsonException, ParseException {
         Map<String, Object> retMap = new HashMap<String, Object>();
 
         if(json != JsonObject.NULL) {
@@ -85,7 +133,7 @@ public class SKM {
         return retMap;
     }
 
-    private static Map toMap(JsonObject object) throws JsonException {
+    private static Map toMap(JsonObject object) throws JsonException, ParseException {
         Map<String, Object> map = new HashMap<String, Object>();
 
         Iterator<String> keysItr =  object.keySet().iterator();
@@ -100,12 +148,21 @@ public class SKM {
             else if(value instanceof JsonObject) {
                 value = toMap((JsonObject) value);
             }
+            else if(value instanceof JsonString)
+            {
+            	value =   ((JsonString) value).getString();
+            }
+            else if(value instanceof JsonNumber)
+            {
+            	NumberFormat nf = NumberFormat.getInstance(Locale.ENGLISH); 
+            	value = nf.parseObject(value.toString());
+            }
             map.put(key, value);
         }
         return map;
     }
 
-    private static List toList(JsonArray array) throws JsonException {
+    private static List toList(JsonArray array) throws JsonException, ParseException {
         List<Object> list = new ArrayList<Object>();
         for(int i = 0; i < array.size(); i++) {
             Object value = array.get(i);
