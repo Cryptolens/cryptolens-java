@@ -29,7 +29,6 @@ public class SKMTest {
 
 		Map<String,String> output = SKM.GetParameters(input, "Validate");
 		
-		System.out.println(output);
 		if(output.containsKey("error") && output.get("error") != "")
 		{
 			System.out.println(output.get("error"));
