@@ -3,12 +3,10 @@ package skgl;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.URL;
-import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -28,9 +26,10 @@ import javax.json.*;
 public class SKM {
 
 	/**
-	 * This method will interpret the input from the dictionary that was returned through "GetParameters" method, if the action was either "activate" or "validate".
+	 * This method will interpret the input from the dictionary that was returned through "GetParameters" method, if the action was either "activate" or "validate". <br>
+	 * If there is an error, null will be returned.
 	 * @param parameters The Map array returned in "GetParameters" method.
-	 * @return A Key Information object. 
+	 * @return A Key Information object. If parameters contains an error, null is returned.
 	 */
 	public static KeyInformation GetKeyInformationFromParameters(Map<String,String> parameters)
 	{
