@@ -26,6 +26,39 @@ import javax.json.*;
 public class SKM {
 
 	/**
+	 * This method will check whether the key is valid or invalid against the Serial Key Manager database. The method will return an object (KeyInformation) only if:<br>
+     * the key exists in the database (it has been generated)<br>
+	 * the key is not blocked<br>
+	 * the machine code that is activated has not been activated before<br>
+	 * the limit for maximum number of machine codes has not been achieved<br>
+	 * the machine code exists in the Allowed Machine codes.<br>
+	 * NOTE: In Addition, depending on the settings, this method will activate a machine code.<br>
+	 * @param pv
+	 * @param key
+	 * @param machineCode
+	 * @return
+	 */
+	public static KeyInformation KeyActivation (ProductVariables pv, String key, String machineCode) {
+		Map<String,String> input= new HashMap<String, String>();
+		
+		input.put("uid", pv.getUID());
+        input.put("pid", pv.getPID());
+        input.put("hsum", pv.getHSUM());
+        input.put("sid", key);
+
+		Map<String,String> output = SKM.GetParameters(input, "Activate");
+		
+		if(output.containsKey("error") && output.get("error") != "")
+		{
+			System.out.println(output.get("error"));
+			return null;
+		}
+		
+		return GetKeyInformationFromParameters(output);
+	}
+	
+	
+	/**
 	 * This method will interpret the input from the dictionary that was returned through "GetParameters" method, if the action was either "activate" or "validate". <br>
 	 * If there is an error, null will be returned.
 	 * @param parameters The Map array returned in "GetParameters" method.

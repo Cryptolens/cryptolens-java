@@ -12,6 +12,7 @@ import java.util.Map;
 
 import skgl.*;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class SKMTest {
@@ -52,5 +53,18 @@ public class SKMTest {
 		System.out.println(output.CreationDate());
 		
 	}
-
+	
+	@Test
+	public void  KeyActivationTest() throws NumberFormatException, ParseException {
+		
+		String machineCode = "";
+		String key = "MNIVR-MGQRL-QGUZK-BGJHQ";
+		
+		KeyInformation ki = SKM.KeyActivation(new ProductVariables("3","2", "751963"), key, machineCode);
+		
+		assertNotEquals(ki, null);
+		
+		System.out.println(ki.CreationDate());
+		
+	}
 }
