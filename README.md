@@ -8,4 +8,6 @@ An equivalent API exists for .NET Framework also. It can be found at either:
 * https://support.serialkeymanager.com/skgl-extension/ or
 * https://www.nuget.org/packages/SKGLExtension/
 
-The source code is located at https://skgl.codeplex.com/SourceControl/latest.
+##Examples
+Many of the examples for Java can be found here:
+* https://support.serialkeymanager.com/ac/examples
