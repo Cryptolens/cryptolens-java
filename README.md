@@ -11,3 +11,7 @@ An equivalent API exists for .NET Framework also. It can be found at either:
 ##Examples
 Many of the examples for Java can be found here:
 * https://support.serialkeymanager.com/ac/examples
+
+##Documenation
+API documentation can be found here:
+* http://api.serialkeymanager.com/java/
