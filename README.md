@@ -2,7 +2,7 @@ SKGL Extension for Java
 =======================
 
 This is client API that can be used to access the funtionality of Serial Key Manager Web API.
-* The documentation of the Web API: https://serialkeymanager.com/docs/api.
+* The documentation of the Web API: https://app.cryptolens.io/docs/api.
 
 An equivalent API exists for .NET Framework also. It can be found at either:
 * https://support.serialkeymanager.com/skgl-extension/ or
