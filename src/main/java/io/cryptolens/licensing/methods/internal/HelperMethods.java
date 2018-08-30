@@ -1,15 +1,10 @@
 package io.cryptolens.licensing.methods.internal;
 
 import java.io.InputStream;
+import java.net.URL;
+import java.io.*;
+import javax.net.ssl.HttpsURLConnection;
 
-import org.glassfish.jersey.core;
-
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 public class HelperMethods {
 
@@ -18,24 +13,37 @@ public class HelperMethods {
     /**
      * Calls the Web API 3 and returns the raw response.
      */
-    public static InputStream SendRequestToWebAPI3(Object inputParams, String typeOfAction, String token) {
+    public static InputStream SendRequestToWebAPI3(byte[] inputParams, String typeOfAction, String token) {
 
-        Client client = ClientBuilder.newClient();
+        try {
+            HttpsURLConnection connection = (HttpsURLConnection) new URL(SERVER + typeOfAction).openConnection();
 
-        WebTarget resource = client.target("http://localhost:8080/someresource");
+            // Compress the data to save bandwidth
+            //byte[] compressedData = compress(data.toString());
+            // Add headers
+            connection.setRequestMethod("POST");
+            connection.addRequestProperty("Accept", "application/json");
+            connection.addRequestProperty("Connection", "close");
+            //connection.addRequestProperty("Content-Encoding", "gzip"); // We gzip our request
+            connection.addRequestProperty("Content-Length", Integer.toString(inputParams.length));
+            connection.setRequestProperty("Content-Type", "application/json"); // We send our data in JSON format
+            connection.setRequestProperty("User-Agent", "cryptolens-java-v10");
+            connection.setRequestProperty("token",token);
 
-        Invocation.Builder request = resource.request();
-        request.accept(MediaType.APPLICATION_JSON);
+            // Send data
+            connection.setDoOutput(true);
+            DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
+            outputStream.write(inputParams);
+            outputStream.flush();
+            outputStream.close();
 
-        Response response = request.get();
+            return connection.getInputStream();
 
-        if (response.getStatusInfo().getFamily() == Family.SUCCESSFUL) {
-            System.out.println("Success! " + response.getStatus());
-            System.out.println(response.getEntity());
-        } else {
-            System.out.println("ERROR! " + response.getStatus());
-            System.out.println(response.getEntity());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
         return null;
     }
 
