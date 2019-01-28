@@ -33,9 +33,6 @@ public class HttpsURLConnectionRequestHandler implements RequestHandler {
     request.close();
 
     int status = connection.getResponseCode();
-    System.out.println(status);
-
-    System.out.println(connection.getResponseMessage());
 
     char[] buffer = new char[2048];
     Reader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));

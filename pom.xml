@@ -4,9 +4,10 @@
   <groupId>io.cryptolens</groupId>
   <artifactId>cryptolens</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.1</version>
   <name>cryptolens</name>
-  <url>http://maven.apache.org</url>
+  <description>A client api to access Cryptolens Licensing API.</description>
+  <url>https://github.com/cryptolens/cryptolens-java</url>
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
