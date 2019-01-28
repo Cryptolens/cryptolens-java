@@ -55,3 +55,13 @@ public class Main {
     }
 }
 ```
+
+In order to adjust this code to your products, several parameters needs to be changed, which we outline below:
+
+* `RSAPubKey` - the RSA Public key, which can be found on [this](https://app.cryptolens.io/docs/api/v3/QuickStart#api-keys) page.
+* `token` - the access token (can be found [here](https://app.cryptolens.io/docs/api/v3/QuickStart#api-keys), in *API Keys* section).
+* `product_id` - the id of the product can be found on the product page (in the example above, it's 3646).
+* `key` - the license key to be verified (above it's MPDWY-PQAOW-FKSCH-SGAAU).
+* `machine_code` - the unique id of the device (we are working on adding a method similar to `Helpers.GetMachineCode()`). In the code above, we hard coded it to 289jf2afs3.
+
+
