@@ -2,17 +2,16 @@
 
 This repository contains examples of how to verify license keys in Java applications.
 
-An example of how to call the helper methods can be found [here](https://github.com/Cryptolens/cryptolens-java/blob/master/src/main/java/io/cryptolens/App.java)
+An example of how to call the helper methods can be found [here](https://github.com/Cryptolens/cryptolens-java/blob/master/src/main/java/io/cryptolens/App.java) (which we explain in more details under *Example*)
 and all the helper methods are located [here](https://github.com/Cryptolens/cryptolens-java/tree/master/src/main/java/io/cryptolens).
 
-This library is still being developed. In mean time, please contact us at support@cryptolens.io should you have any questions.
+This library is still being developed. In meantime, please contact us at support@cryptolens.io should you have any questions.
 
 ## Example
+The following example is similar to what is covered in the [key verification tutorial](https://help.cryptolens.io/examples/key-verification). The only difference at this point is that the Java version does not have built in support for machine code computation.
 
 ```java
-/**
- * Hello world!
- */
+
 public class App 
 {
     public static void main(String[] argv) {
