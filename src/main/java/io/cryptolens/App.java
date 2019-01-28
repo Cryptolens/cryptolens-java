@@ -2,7 +2,6 @@ package io.cryptolens;
 
 /**
  * Hello world!
- *
  */
 public class App 
 {
