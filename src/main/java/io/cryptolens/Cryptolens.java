@@ -20,6 +20,9 @@ import java.security.spec.RSAPublicKeySpec;
 import java.util.Base64;
 import java.util.*;
 
+/**
+ * The main class that contains methods to verify license keys.
+ */
 public class Cryptolens {
     private JavaSecuritySignatureVerifier signatureVerifier;
     private RequestHandler requestHandler;
