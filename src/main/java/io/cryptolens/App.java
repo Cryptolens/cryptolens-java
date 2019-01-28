@@ -12,17 +12,17 @@ public class App
         Cryptolens cryptolens = Cryptolens.getDefault();
         cryptolens.setRSAPubKey(RSAPubKey);
 
-        Cryptolens.ActivateResponse cryptolensResponse =
+        Cryptolens.ActivateResponse response =
             cryptolens.activate( "WyI0NjUiLCJBWTBGTlQwZm9WV0FyVnZzMEV1Mm9LOHJmRDZ1SjF0Vk52WTU0VzB2Il0="
                             , 3646
                             , "MPDWY-PQAOW-FKSCH-SGAAU"
                             , "289jf2afs3"
                             );
 
-        if (!cryptolensResponse.successful()) {
+        if (!response.successful()) {
             System.out.println("Failed to activate!");
-            Cryptolens.ActivateServerError er = cryptolensResponse.getServerError();
-            Exception ex = cryptolensResponse.getException();
+            Cryptolens.ActivateServerError er = response.getServerError();
+            Exception ex = response.getException();
 
             if (er != null) {
                 System.out.println("Server error: " + er);
@@ -35,7 +35,7 @@ public class App
             return;
         }
 
-        LicenseKey licenseKey = cryptolensResponse.getLicenseKey();
+        LicenseKey licenseKey = response.getLicenseKey();
 
         System.out.println("Activation was successful!");
         System.out.println(licenseKey.getKey());
