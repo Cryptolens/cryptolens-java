@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="43b2cfd6-9146-4b1c-a0ca-55301d2b7477" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/Cryptolens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/Cryptolens.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/LicenseKey.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-714">
-              <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+              <caret column="22" selection-start-column="22" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -141,8 +138,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="66" />
-    <option name="y" value="22" />
+    <option name="x" value="-35" />
+    <option name="y" value="-8" />
     <option name="width" value="1672" />
     <option name="height" value="943" />
   </component>
@@ -299,11 +296,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24946696" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24946696" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" />
@@ -311,7 +307,7 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -385,7 +381,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/LicenseKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-714">
-          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+          <caret column="22" selection-start-column="22" selection-end-column="22" />
         </state>
       </provider>
     </entry>
