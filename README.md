@@ -2,7 +2,7 @@
 
 This repository contains examples of how to verify license keys in Java applications.
 
-This library is still being developed. In meantime, please contact us at support@cryptolens.io should you have any questions.
+This library is continuously being improved. Please contact us at support@cryptolens.io should you have any questions.
 
 ## Example
 The following example is similar to what is covered in the [key verification tutorial](https://help.cryptolens.io/examples/key-verification).
