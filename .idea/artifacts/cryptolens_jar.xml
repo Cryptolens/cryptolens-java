@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="cryptolens:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/cryptolens_jar</output-path>
+    <root id="archive" name="cryptolens.jar">
+      <element id="module-output" name="cryptolens" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
