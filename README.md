@@ -5,7 +5,7 @@ This repository contains examples of how to verify license keys in Java applicat
 This library is still being developed. In meantime, please contact us at support@cryptolens.io should you have any questions.
 
 ## Example
-The following example is similar to what is covered in the [key verification tutorial](https://help.cryptolens.io/examples/key-verification). The only difference at this point is that the Java version does not have built in support for machine code computation.
+The following example is similar to what is covered in the [key verification tutorial](https://help.cryptolens.io/examples/key-verification).
 
 Assuming you have referenced the `cryptolens.jar` file, the code below should generate successful result. A working project with the code below can be found in the [example-app](https://github.com/Cryptolens/cryptolens-java/tree/master/example-app) folder.
 
