@@ -4,7 +4,7 @@
   <groupId>io.cryptolens</groupId>
   <artifactId>cryptolens</artifactId>
   <packaging>jar</packaging>
-  <version>1.1</version>
+  <version>1.2</version>
   <name>cryptolens</name>
   <description>A client api to access Cryptolens Licensing API.</description>
   <url>https://github.com/cryptolens/cryptolens-java</url>
@@ -23,6 +23,11 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.oshi</groupId>
+      <artifactId>oshi-core</artifactId>
+      <version>LATEST</version>
     </dependency>
   </dependencies>
 </project>

@@ -1,19 +1,20 @@
 import io.cryptolens.Cryptolens;
+import io.cryptolens.Helpers;
 import io.cryptolens.LicenseKey;
 
 public class Main {
 
     public static void main(String[] args) {
-        String RSAPubKey = "<RSAKeyValue><Modulus>khbyu3/vAEBHi339fTuo2nUaQgSTBj0jvpt5xnLTTF35FLkGI+5Z3wiKfnvQiCLf+5s4r8JB/Uic/i6/iNjPMILlFeE0N6XZ+2pkgwRkfMOcx6eoewypTPUoPpzuAINJxJRpHym3V6ZJZ1UfYvzRcQBD/lBeAYrvhpCwukQMkGushKsOS6U+d+2C9ZNeP+U+uwuv/xu8YBCBAgGb8YdNojcGzM4SbCtwvJ0fuOfmCWZvUoiumfE4x7rAhp1pa9OEbUe0a5HL+1v7+JLBgkNZ7Z2biiHaM6za7GjHCXU8rojatEQER+MpgDuQV3ZPx8RKRdiJgPnz9ApBHFYDHLDzDw==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
+        String RSAPubKey = "<RSAKeyValue><Modulus>sGbvxwdlDbqFXOMlVUnAF5ew0t0WpPW7rFpI5jHQOFkht/326dvh7t74RYeMpjy357NljouhpTLA3a6idnn4j6c3jmPWBkjZndGsPL4Bqm+fwE48nKpGPjkj4q/yzT4tHXBTyvaBjA8bVoCTnu+LiC4XEaLZRThGzIn5KQXKCigg6tQRy0GXE13XYFVz/x1mjFbT9/7dS8p85n8BuwlY5JvuBIQkKhuCNFfrUxBWyu87CFnXWjIupCD2VO/GbxaCvzrRjLZjAngLCMtZbYBALksqGPgTUN7ZM24XbPWyLtKPaXF2i4XRR9u6eTj5BfnLbKAU5PIVfjIS+vNYYogteQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
 
         Cryptolens cryptolens = Cryptolens.getDefault();
-        cryptolens.setRSAPubKey(RSAPubKey);
+        cryptolens.setRSAPublicKey(RSAPubKey);
 
         Cryptolens.ActivateResponse response =
-                cryptolens.activate( "WyI0NjUiLCJBWTBGTlQwZm9WV0FyVnZzMEV1Mm9LOHJmRDZ1SjF0Vk52WTU0VzB2Il0="
-                        , 3646
-                        , "MPDWY-PQAOW-FKSCH-SGAAU"
-                        , "289jf2afs3"
+                cryptolens.activate( "WyIyNTk1IiwidVVrQm94OGlYS3pHZlhTc0x6Rm9mN1piektrT0FSd0REaFZ0ZXZJMSJd"
+                        , 3349
+                        , "ICVLD-VVSZR-ZTICT-YKGXL"
+                        , Helpers.GetMachineCode()
                 );
 
         if (!response.successful()) {

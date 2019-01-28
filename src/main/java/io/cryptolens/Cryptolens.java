@@ -52,7 +52,7 @@ public class Cryptolens {
      * Sets the RSA Public key to verify the response from the server. You can
      * find it here: https://app.cryptolens.io/docs/api/v3/QuickStart#api-key.
      */
-    public void setRSAPubKey (String RSAPubKey) {
+    public void setRSAPublicKey (String RSAPubKey) {
         int mstart = RSAPubKey.indexOf("<Modulus>");
         int mend = RSAPubKey.indexOf("</Modulus>");
 
