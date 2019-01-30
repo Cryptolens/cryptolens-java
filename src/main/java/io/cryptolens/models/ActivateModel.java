@@ -44,4 +44,21 @@ public class ActivateModel {
     /// </summary>
     public int MaxOverdraft;
 
+    public ActivateModel() {
+
+    }
+    public ActivateModel(int productId, String key, String machineCode) {
+        ProductId = productId;
+        Key = key;
+        MachineCode = machineCode;
+    }
+    public ActivateModel(int productId, String key, String machineCode, int fieldsToReturn, boolean metadata, int floatingTimeInterval, int maxOverdraft) {
+        ProductId = productId;
+        Key = key;
+        MachineCode = machineCode;
+        FieldsToReturn = fieldsToReturn;
+        Metadata = metadata;
+        FloatingTimeInterval = floatingTimeInterval;
+        MaxOverdraft = maxOverdraft;
+    }
 }
