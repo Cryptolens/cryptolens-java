@@ -22,7 +22,6 @@ public class Key {
      * @param RSAPubKey
      * @param model
      * @return
-     * @throws Exception
      */
     public static LicenseKey Activate (String token, String RSAPubKey, ActivateModel model) {
 
@@ -62,6 +61,7 @@ public class Key {
 
             String s = new String(licenseKey, StandardCharsets.UTF_8);
             LicenseKey license = new Gson().fromJson(s, LicenseKey.class);
+            license.RawResponse = result.RawResponse;
 
             return license;
         } catch (Exception ex) {

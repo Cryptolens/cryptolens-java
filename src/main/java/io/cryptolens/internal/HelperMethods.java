@@ -3,6 +3,7 @@ package io.cryptolens.internal;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.cryptolens.*;
+import io.cryptolens.models.ActivateResult;
 import io.cryptolens.models.BasicResult;
 
 import java.lang.reflect.Field;
@@ -23,8 +24,9 @@ public class HelperMethods {
                 if(value != null) {
                     params.put(field.getName(), value.toString());
                 }
+            } catch (Exception ex) {
+                System.err.println(ex.getStackTrace());
             }
-            catch (Exception ex) {}
         }
 
         if(extraParams != null)
@@ -38,53 +40,14 @@ public class HelperMethods {
 
             Gson gson = new Gson();
 
-            return gson.fromJson(response, clazz);
+            T res = gson.fromJson(response, clazz);
+            res.RawResponse = response;
+            return res;
 
-            /*Base64Response base64response = responseParser.parseBase64Response(response);
-
-            if (base64response.message != null) {
-                return new Cryptolens.ActivateResponse(parseServerMessage(base64response.message));
-            }
-
-            if (!signatureVerifier.verify(base64response.licenseKey, base64response.signature)) {
-                System.err.println("Signature check failed");
-                return new Cryptolens.ActivateResponse(new RuntimeException("Invalid signature"));
-            }
-            return new Cryptolens.ActivateResponse(responseParser.parseLicenseKey(base64response.licenseKey));*/
-        } catch (Exception ex) {}
+        } catch (Exception ex) {
+            System.err.println(ex.getStackTrace());
+        }
 
         return  null;
-    }
-
-    private static Cryptolens.ActivateServerError parseServerMessage(String message) {
-        if ("Unable to authenticate.".equals(message)) {
-            return Cryptolens.ActivateServerError.INVALID_ACCESS_TOKEN;
-        }
-
-        if ("Access denied.".equals(message)) {
-            return Cryptolens.ActivateServerError.ACCESS_DENIED;
-        }
-
-        if ("The input parameters were incorrect.".equals(message)) {
-            return Cryptolens.ActivateServerError.INCORRECT_INPUT_PARAMETER;
-        }
-
-        if ("Could not find the product.".equals(message)) {
-            return Cryptolens.ActivateServerError.PRODUCT_NOT_FOUND;
-        }
-
-        if ("Could not find the key.".equals(message)) {
-            return Cryptolens.ActivateServerError.KEY_NOT_FOUND;
-        }
-
-        if ("The key is blocked and cannot be accessed.".equals(message)) {
-            return Cryptolens.ActivateServerError.KEY_BLOCKED;
-        }
-
-        if ("Cannot activate the new device as the limit has been reached.".equals(message)) {
-            return Cryptolens.ActivateServerError.DEVICE_LIMIT_REACHED;
-        }
-
-        return Cryptolens.ActivateServerError.UNKNOWN_SERVER_REPLY;
     }
 }

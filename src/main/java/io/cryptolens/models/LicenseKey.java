@@ -27,4 +27,5 @@ public class LicenseKey {
     //  private int AllowedMachines;
 //  private List<DataObject> DataObjects;
     public long SignDate;
+    public String RawResponse;
 }
