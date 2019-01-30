@@ -39,9 +39,10 @@ public class KeyTest
         ActivateModel model = new ActivateModel();
         model.ProductId = 3349;
 
-        BasicResult aaa = Key.Activate("WyIyNjA5IiwiaWE5b0VFT3Q2eDlNR2FvbHBHK2VOYUZ4bzNjT3h5UkNrMCtiYnhPRSJd", model);
+        BasicResult aaa = (BasicResult) Key.Activate("WyIyNjA5IiwiaWE5b0VFT3Q2eDlNR2FvbHBHK2VOYUZ4bzNjT3h5UkNrMCtiYnhPRSJd", model);
 
         System.out.println(aaa.Message);
+        System.out.println(aaa.Result);
 
         assertTrue( true );
 

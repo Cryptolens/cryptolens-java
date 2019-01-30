@@ -23,7 +23,7 @@ public class Key {
         extraParams.put("SignMethod", "1");
         extraParams.put("token", token);
 
-        BasicResult result = HelperMethods.SendRequestToWebAPI("key/activate", model, extraParams);
+        BasicResult result = HelperMethods.SendRequestToWebAPI("key/activate", model, extraParams, BasicResult.class);
 
         JavaSecuritySignatureVerifier signatureVerifier = new JavaSecuritySignatureVerifier();
         GsonResponseParser responseParser = new GsonResponseParser();

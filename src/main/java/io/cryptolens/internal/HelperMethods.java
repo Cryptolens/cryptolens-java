@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class HelperMethods {
 
-    public static <T extends BasicResult> T SendRequestToWebAPI(String method, Object model, Map<String,String> extraParams) throws Exception {
+    public static <T extends BasicResult> T SendRequestToWebAPI(String method, Object model, Map<String,String> extraParams, Class<T> clazz) {
 
         Map<String,String> params = new HashMap<>();
 
@@ -32,14 +32,13 @@ public class HelperMethods {
 
         RequestHandler requestHandler = new HttpsURLConnectionRequestHandler();
 
-
+        try {
 
             String response = requestHandler.makePostRequest("https://app.cryptolens.io/api/" + method, params);
 
             Gson gson = new Gson();
 
-            Type typeOfT = new TypeToken<T>(){}.getType();
-            return gson.fromJson(response, typeOfT);
+            return gson.fromJson(response, clazz);
 
             /*Base64Response base64response = responseParser.parseBase64Response(response);
 
@@ -52,9 +51,9 @@ public class HelperMethods {
                 return new Cryptolens.ActivateResponse(new RuntimeException("Invalid signature"));
             }
             return new Cryptolens.ActivateResponse(responseParser.parseLicenseKey(base64response.licenseKey));*/
+        } catch (Exception ex) {}
 
-
-        //return  null;
+        return  null;
     }
 
     private static Cryptolens.ActivateServerError parseServerMessage(String message) {
