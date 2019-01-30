@@ -1,4 +1,4 @@
-package io.cryptolens;
+package io.cryptolens.methods;
 
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
@@ -19,6 +19,8 @@ public class Helpers {
 
         return SHA256(getRawDeviceID());
     }
+
+    public 
 
     /**
      * Return the sha256 checksum of a string.

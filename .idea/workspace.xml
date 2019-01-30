@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b2cfd6-9146-4b1c-a0ca-55301d2b7477" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivatedMachine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/BasicResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/BasicResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,13 +25,13 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="30" />
+          <entry key="JAVA" value="33" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3667" />
+          <entry key="JAVA" value="3723" />
           <entry key="XML" value="83" />
         </counts>
       </usages-collector>
@@ -44,6 +39,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/BasicResult.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -54,30 +66,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/internal/HelperMethods.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/GsonResponseParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1039">
-              <caret line="106" column="62" lean-forward="true" selection-start-line="106" selection-start-column="4" selection-end-line="106" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
+            <state relative-caret-position="323">
               <caret line="19" column="82" selection-start-line="19" selection-start-column="82" selection-end-line="19" selection-end-column="82" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -167,7 +158,6 @@
         <option value="$PROJECT_DIR$/src/test/java/io/cryptolens/AppTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/Cryptolens.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/Key.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateResult.java" />
@@ -177,6 +167,8 @@
         <option value="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivatedMachine.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java" />
       </list>
     </option>
   </component>
@@ -448,8 +440,8 @@
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -495,16 +487,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/App.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="52" column="10" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/RequestHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -618,8 +600,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
+        <state relative-caret-position="323">
           <caret line="19" column="82" selection-start-line="19" selection-start-column="82" selection-end-line="19" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
