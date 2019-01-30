@@ -1,5 +1,7 @@
-package io.cryptolens;
+package io.cryptolens.methods;
 
+import io.cryptolens.models.ActivatedMachine;
+import io.cryptolens.models.LicenseKey;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.ComputerSystem;
@@ -18,6 +20,26 @@ public class Helpers {
     public static String GetMachineCode() {
 
         return SHA256(getRawDeviceID());
+    }
+
+    /**
+     * Check if the device is registered with the license key.
+     * @returns True if the license is registered with this machine and False otherwise.
+     */
+    public static boolean IsOnRightMachine(LicenseKey license) {
+
+        String current_mid = Helpers.GetMachineCode();
+
+        if (license.ActivatedMachines == null){
+            return false;
+        }
+
+        for (ActivatedMachine machine : license.ActivatedMachines) {
+            if(machine.Mid.equals(current_mid))
+                return true;
+        }
+
+        return false;
     }
 
     /**
