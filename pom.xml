@@ -4,7 +4,7 @@
   <groupId>io.cryptolens</groupId>
   <artifactId>cryptolens</artifactId>
   <packaging>jar</packaging>
-  <version>1.3</version>
+  <version>1.4</version>
   <name>cryptolens</name>
   <description>A client api to access Cryptolens Licensing API.</description>
   <url>https://github.com/cryptolens/cryptolens-java</url>

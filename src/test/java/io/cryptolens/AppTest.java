@@ -33,6 +33,10 @@ public class AppTest
      */
     public void testApp()
     {
+        String test = "floating:test123";
+
+        System.out.println(test.substring(9));
+
         assertTrue( true );
 
     }
