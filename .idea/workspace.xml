@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b2cfd6-9146-4b1c-a0ca-55301d2b7477" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example-app/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/example-app/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,13 +28,13 @@
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="JAVA" value="33" />
-          <entry key="XML" value="2" />
+          <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="4455" />
-          <entry key="XML" value="83" />
+          <entry key="XML" value="84" />
         </counts>
       </usages-collector>
     </session>
@@ -60,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="82" selection-start-line="19" selection-start-column="82" selection-end-line="19" selection-end-column="82" />
+            <state relative-caret-position="289">
+              <caret line="26" column="91" selection-start-line="26" selection-start-column="91" selection-end-line="26" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,11 +74,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="50" column="67" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
+            <state relative-caret-position="150">
+              <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -151,7 +162,6 @@
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/HttpsURLConnectionRequestHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/App.java" />
         <option value="$PROJECT_DIR$/src/test/java/io/cryptolens/AppTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/Cryptolens.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/Key.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateResult.java" />
@@ -159,11 +169,12 @@
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/internal/HelperMethods.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivatedMachine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateModel.java" />
         <option value="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" />
       </list>
     </option>
   </component>
@@ -174,9 +185,8 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="19" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-7" />
     <option name="width" value="1546" />
     <option name="height" value="830" />
   </component>
@@ -266,6 +276,11 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cryptolens" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptolens" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryptolens-java" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cryptolens" type="b2602c69:ProjectViewProjectNode" />
@@ -386,12 +401,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="KeyTest_testApp - 2019.01.30 at 14h 59m 43s.xml">
-      <configuration name="KeyTest.testApp" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KeyTest - 2019.01.30 at 15h 06m 05s.xml">
-      <configuration name="KeyTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="KeyTest - 2019.01.30 at 15h 06m 36s.xml">
       <configuration name="KeyTest" configurationId="JUnit" />
     </history-entry>
@@ -416,6 +425,12 @@
     <history-entry file="KeyTest - 2019.01.30 at 15h 20m 20s.xml">
       <configuration name="KeyTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="KeyTest - 2019.01.30 at 16h 23m 18s.xml">
+      <configuration name="KeyTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KeyTest - 2019.01.30 at 16h 23m 54s.xml">
+      <configuration name="KeyTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -436,7 +451,7 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -506,13 +521,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/LicenseKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -565,16 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="82" selection-start-line="19" selection-start-column="82" selection-end-line="19" selection-end-column="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -595,13 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="549">
@@ -609,10 +600,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="50" column="67" selection-start-line="50" selection-start-column="67" selection-end-line="50" selection-end-column="67" />
+        <state relative-caret-position="150">
+          <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="26" column="91" selection-start-line="26" selection-start-column="91" selection-end-line="26" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
