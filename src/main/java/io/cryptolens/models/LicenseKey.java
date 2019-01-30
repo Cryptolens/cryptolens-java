@@ -76,7 +76,7 @@ public class LicenseKey {
 
         String s = new String(licenseKey, StandardCharsets.UTF_8);
         LicenseKey license = new Gson().fromJson(s, LicenseKey.class);
-        license.RawResponse = result.RawResponse;
+        license.RawResponse = licenseString;
 
         return license;
     }

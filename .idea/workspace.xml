@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43b2cfd6-9146-4b1c-a0ca-55301d2b7477" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,13 +30,13 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="37" />
+          <entry key="JAVA" value="38" />
           <entry key="XML" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6191" />
+          <entry key="JAVA" value="6512" />
           <entry key="XML" value="85" />
         </counts>
       </usages-collector>
@@ -61,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/internal/HelperMethods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="40" selection-start-line="40" selection-end-line="42" selection-end-column="51" />
+            <state relative-caret-position="425">
+              <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
+            <state relative-caret-position="439">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+            <state relative-caret-position="413">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,8 +106,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+            <state relative-caret-position="495">
+              <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#950#951#0" expanded="true" />
@@ -146,13 +146,13 @@
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivatedMachine.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateModel.java" />
-        <option value="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivateResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/BasicResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/internal/HelperMethods.java" />
         <option value="$PROJECT_DIR$/src/test/java/io/cryptolens/AppTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java" />
+        <option value="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java" />
       </list>
@@ -298,7 +298,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.KeyTest">
+  <component name="RunManager" selected="JUnit.KeyTest.testApp">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.cryptolens.App" />
       <module name="cryptolens" />
@@ -364,9 +364,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.KeyTest.testApp" />
         <item itemvalue="JUnit.KeyTest" />
         <item itemvalue="JUnit.AppTest" />
-        <item itemvalue="JUnit.KeyTest.testApp" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -382,21 +382,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="KeyTest - 2019.01.30 at 15h 13m 27s.xml">
-      <configuration name="KeyTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KeyTest - 2019.01.30 at 15h 19m 06s.xml">
-      <configuration name="KeyTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KeyTest - 2019.01.30 at 15h 19m 46s.xml">
-      <configuration name="KeyTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KeyTest - 2019.01.30 at 15h 19m 59s.xml">
-      <configuration name="KeyTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="KeyTest - 2019.01.30 at 15h 20m 20s.xml">
-      <configuration name="KeyTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="KeyTest - 2019.01.30 at 16h 23m 18s.xml">
       <configuration name="KeyTest" configurationId="JUnit" />
     </history-entry>
@@ -412,6 +397,21 @@
     <history-entry file="KeyTest - 2019.01.30 at 21h 02m 41s.xml">
       <configuration name="KeyTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="KeyTest - 2019.01.30 at 21h 05m 04s.xml">
+      <configuration name="KeyTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KeyTest_testApp - 2019.01.30 at 21h 06m 00s.xml">
+      <configuration name="KeyTest.testApp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KeyTest_testApp - 2019.01.30 at 21h 07m 12s.xml">
+      <configuration name="KeyTest.testApp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KeyTest_testApp - 2019.01.30 at 21h 08m 46s.xml">
+      <configuration name="KeyTest.testApp" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="KeyTest_testApp - 2019.01.30 at 21h 09m 53s.xml">
+      <configuration name="KeyTest.testApp" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -426,7 +426,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.42430705" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18443497" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -521,13 +521,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/Helpers.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/BasicResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/io/cryptolens/AppTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -542,18 +535,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-539">
-          <caret line="49" column="6" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -578,20 +559,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-539">
+          <caret line="49" column="6" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/internal/HelperMethods.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" selection-start-line="40" selection-end-line="42" selection-end-column="51" />
+        <state relative-caret-position="425">
+          <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/BasicResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        <state relative-caret-position="495">
+          <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#950#951#0" expanded="true" />
@@ -602,8 +602,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="413">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -612,8 +612,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Key.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
+        <state relative-caret-position="439">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
