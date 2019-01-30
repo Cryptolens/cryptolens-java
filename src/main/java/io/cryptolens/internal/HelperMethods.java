@@ -1,14 +1,18 @@
 package io.cryptolens.internal;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import io.cryptolens.*;
+import io.cryptolens.models.BasicResult;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
 public class HelperMethods {
 
-    public Object SendRequestToWebAPI(String token, String method, Object model) {
+    public static <T extends BasicResult> T SendRequestToWebAPI(String method, Object model, Map<String,String> extraParams) throws Exception {
 
         Map<String,String> params = new HashMap<>();
 
@@ -23,18 +27,21 @@ public class HelperMethods {
             catch (Exception ex) {}
         }
 
-        // force sign and the new protocol (only in activate)
-        params.put("Sign", "true");
-        params.put("SignMethod", "1");
+        if(extraParams != null)
+            params.putAll(extraParams);
 
-        JavaSecuritySignatureVerifier signatureVerifier = new JavaSecuritySignatureVerifier();
         RequestHandler requestHandler = new HttpsURLConnectionRequestHandler();
-        GsonResponseParser responseParser = new GsonResponseParser();
 
-        try {
+
 
             String response = requestHandler.makePostRequest("https://app.cryptolens.io/api/" + method, params);
-            Base64Response base64response = responseParser.parseBase64Response(response);
+
+            Gson gson = new Gson();
+
+            Type typeOfT = new TypeToken<T>(){}.getType();
+            return gson.fromJson(response, typeOfT);
+
+            /*Base64Response base64response = responseParser.parseBase64Response(response);
 
             if (base64response.message != null) {
                 return new Cryptolens.ActivateResponse(parseServerMessage(base64response.message));
@@ -44,10 +51,10 @@ public class HelperMethods {
                 System.err.println("Signature check failed");
                 return new Cryptolens.ActivateResponse(new RuntimeException("Invalid signature"));
             }
-            return new Cryptolens.ActivateResponse(responseParser.parseLicenseKey(base64response.licenseKey));
-        } catch (Exception ex) {}
+            return new Cryptolens.ActivateResponse(responseParser.parseLicenseKey(base64response.licenseKey));*/
 
-        return  null;
+
+        //return  null;
     }
 
     private static Cryptolens.ActivateServerError parseServerMessage(String message) {
