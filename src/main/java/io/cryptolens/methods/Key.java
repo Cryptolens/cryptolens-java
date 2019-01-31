@@ -39,35 +39,7 @@ public class Key {
             return null;
         }
 
-        try {
-            Base64.Decoder decoder = Base64.getDecoder();
-
-            byte[] licenseKey = decoder.decode(result.licenseKey);
-            byte[] signature = decoder.decode(result.signature);
-
-            // setting up the signatures
-            JavaSecuritySignatureVerifier signatureVerifier = new JavaSecuritySignatureVerifier();
-            int mstart = RSAPubKey.indexOf("<Modulus>");
-            int mend = RSAPubKey.indexOf("</Modulus>");
-            int estart = RSAPubKey.indexOf("<Exponent>");
-            int eend = RSAPubKey.indexOf("</Exponent>");
-            signatureVerifier.setModulusBase64(RSAPubKey.substring(mstart + 9, mend));
-            signatureVerifier.setExponentBase64(RSAPubKey.substring(estart + 10, eend));
-
-            if (!signatureVerifier.verify(licenseKey, signature)) {
-                System.err.println("Signature check failed");
-                return null;
-            }
-
-            String s = new String(licenseKey, StandardCharsets.UTF_8);
-            LicenseKey license = new Gson().fromJson(s, LicenseKey.class);
-            license.RawResponse = result.RawResponse;
-
-            return license;
-        } catch (Exception ex) {
-            System.err.println(ex.getStackTrace());
-        }
-        return null;
+        return LicenseKey.LoadFromString(RSAPubKey, result.RawResponse);
     }
 
 }

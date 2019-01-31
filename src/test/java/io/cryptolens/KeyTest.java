@@ -49,7 +49,17 @@ public class KeyTest
         } else {
             System.out.println("The license is valid!");
             System.out.println("It will expire: " + license.Expires);
+
+            System.out.println(license.Customer.Created);
+
+            String licenseString = license.SaveAsString();
+
+            LicenseKey newLicense = LicenseKey.LoadFromString(RSAPubKey, licenseString);
+
+            System.out.println(newLicense.Expires);
         }
+
+
 
         assertTrue( true );
 
