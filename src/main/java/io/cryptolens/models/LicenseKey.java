@@ -46,14 +46,28 @@ public class LicenseKey {
         return RawResponse;
     }
 
+
     /**
      * Load a license string (created with @see SaveAsString) into a license object.
      * Note, signature verification will be performed under the hood.
      * @param RSAPubKey Your RSA Public Key, which can be found <a href="https://app.cryptolens.io/docs/api/v3/QuickStart">here</a>.
      * @param licenseString The license key object stored as a string.
-     * @return A new license key object or null (if an error has occurred).
      */
     public static LicenseKey LoadFromString(String RSAPubKey, String licenseString) {
+        return LoadFromString(RSAPubKey, licenseString, -1);
+    }
+
+    /**
+     * Load a license string (created with @see SaveAsString) into a license object.
+     * Note, signature verification will be performed under the hood.
+     * @param RSAPubKey Your RSA Public Key, which can be found <a href="https://app.cryptolens.io/docs/api/v3/QuickStart">here</a>.
+     * @param licenseString The license key object stored as a string.
+     * @param signatureExpirationInterval If the license key was signed, this method
+     *                                    will check so that no more than "signatureExpirationInterval"
+     *                                    days have passed since the last activation.
+     * @return A new license key object or null (if an error has occurred).
+     */
+    public static LicenseKey LoadFromString(String RSAPubKey, String licenseString, int signatureExpirationInterval) {
 
         ActivateResult result = new Gson().fromJson(licenseString, ActivateResult.class);
 
@@ -81,6 +95,16 @@ public class LicenseKey {
         String s = new String(licenseKey, StandardCharsets.UTF_8);
         LicenseKey license = new Gson().fromJson(s, LicenseKey.class);
         license.RawResponse = licenseString;
+
+        if(signatureExpirationInterval > 0) {
+            long unixTime = System.currentTimeMillis() / 1000L;
+
+            if(license.SignDate + 0x15180*signatureExpirationInterval < unixTime) {
+                // the license file has expired.
+                System.err.println("The license file has expired.");
+                return  null;
+            }
+        }
 
         return license;
     }
