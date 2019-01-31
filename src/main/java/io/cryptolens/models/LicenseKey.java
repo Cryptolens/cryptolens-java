@@ -76,7 +76,7 @@ public class LicenseKey {
                 System.err.println("Signature check failed");
                 return null;
             }
-        } catch(Exception ex) {System.err.println(ex.getStackTrace());}
+        } catch(Exception ex) {System.err.println(ex.getStackTrace()); return null;}
 
         String s = new String(licenseKey, StandardCharsets.UTF_8);
         LicenseKey license = new Gson().fromJson(s, LicenseKey.class);
