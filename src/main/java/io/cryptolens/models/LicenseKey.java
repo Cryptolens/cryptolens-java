@@ -32,7 +32,11 @@ public class LicenseKey {
     //  private int AllowedMachines;
     public List<DataObject> DataObjects;
     public long SignDate;
-    public String RawResponse;
+
+    /**
+     * Internal variable used to store the response.
+     */
+    protected String RawResponse;
 
     /**
      * Save the current license object as a string. You can load it again using @see LoadFromString.
