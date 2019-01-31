@@ -14,6 +14,13 @@ public class Main {
         } else {
             System.out.println("The license is valid!");
             System.out.println("It will expire: " + license.Expires);
+
+
+            // Saving and loading a license (for offline use)
+            String licenseString = license.SaveAsString();
+            LicenseKey newLicense = LicenseKey.LoadFromString(RSAPubKey, licenseString);
+
+            System.out.println(newLicense.Expires);
         }
     }
 }

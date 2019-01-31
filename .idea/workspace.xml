@@ -6,9 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43b2cfd6-9146-4b1c-a0ca-55301d2b7477" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivatedMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivatedMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example-app/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/example-app/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
+            <state relative-caret-position="328">
+              <caret line="54" selection-start-line="54" selection-end-line="58" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="229">
-              <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+              <caret line="45" column="26" selection-start-line="45" selection-start-column="15" selection-end-line="45" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -200,8 +198,8 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="width" value="1546" />
+    <option name="height" value="830" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -215,6 +213,11 @@
             <path>
               <item name="cryptolens" type="b2602c69:ProjectViewProjectNode" />
               <item name="cryptolens-java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptolens" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cryptolens-java" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cryptolens" type="b2602c69:ProjectViewProjectNode" />
@@ -605,16 +608,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="52" column="55" selection-start-line="52" selection-start-column="55" selection-end-line="52" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/ActivatedMachine.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -653,7 +646,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+          <caret line="45" column="26" selection-start-line="45" selection-start-column="15" selection-end-line="45" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/io/cryptolens/KeyTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="54" selection-start-line="54" selection-end-line="58" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
