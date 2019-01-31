@@ -25,12 +25,12 @@ public class LicenseKey {
     public String Notes;
     public boolean Block;
     public long GlobalId;
-    //  private GsonCustomer Customer;
+    public Customer Customer;
     public List<ActivatedMachine> ActivatedMachines;
     public boolean TrialActivation;
     public int MaxNoOfMachines;
     //  private int AllowedMachines;
-//  private List<DataObject> DataObjects;
+    public List<DataObject> DataObjects;
     public long SignDate;
     public String RawResponse;
 

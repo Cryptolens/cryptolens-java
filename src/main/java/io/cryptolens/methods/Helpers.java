@@ -15,7 +15,7 @@ public class Helpers {
 
     /**
      * Returns a unique identifier of the device. Note, root access may be required.
-     * Furthermore, this method is not the same as the one used in our .NET client.
+     * Note, this method is not the same as the one used in our .NET client.
      */
     public static String GetMachineCode() {
 
