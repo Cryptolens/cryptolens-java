@@ -76,6 +76,68 @@ public class Helpers {
     }
 
     /**
+     * Check if the current license has expired.
+     * @param licenseKey a license key object.
+     * @return True if it has expired and false otherwise.
+     */
+    public static boolean HasExpired(LicenseKey licenseKey) {
+
+        if(licenseKey == null) {
+            return false;
+        }
+
+        long unixTime = System.currentTimeMillis() / 1000L;
+
+        if (licenseKey.Expires < unixTime) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if the current license has not expired.
+     * @param licenseKey a license key object.
+     * @return True if it has not expired and false otherwise.
+     */
+    public static boolean HasNotExpired(LicenseKey licenseKey) {
+
+        return !Helpers.HasExpired(licenseKey);
+    }
+
+    /**
+     * Check if the license has a certain feature enabled (i.e. set to true).
+     * @param licenseKey a license key object.
+     * @param feature The feature, eg 1 to 8.
+     * @return If the feature is set to true, true is returned and false otherwise.
+     */
+    public static boolean HasFeature(LicenseKey licenseKey, int feature) {
+
+        if(licenseKey == null){
+            return false;
+        }
+
+        if (feature == 1 && licenseKey.F1)
+            return true;
+        if (feature == 2 && licenseKey.F2)
+            return true;
+        if (feature == 3 && licenseKey.F3)
+            return true;
+        if (feature == 4 && licenseKey.F4)
+            return true;
+        if (feature == 5 && licenseKey.F5)
+            return true;
+        if (feature == 6 && licenseKey.F6)
+            return true;
+        if (feature == 7 && licenseKey.F7)
+            return true;
+        if (feature == 8 && licenseKey.F8)
+            return true;
+
+        return false;
+    }
+
+    /**
      * Return the sha256 checksum of a string.
      */
     private static String SHA256(String rawData) {
