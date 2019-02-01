@@ -6,8 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43b2cfd6-9146-4b1c-a0ca-55301d2b7477" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example-app/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/example-app/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,7 +41,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7973" />
+          <entry key="JAVA" value="8187" />
           <entry key="XML" value="86" />
         </counts>
       </usages-collector>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="153">
+              <caret line="77" selection-start-line="77" selection-end-line="81" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#912#913#0" expanded="true" />
@@ -117,10 +117,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="109" column="5" lean-forward="true" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+            <state relative-caret-position="362">
+              <caret line="114" selection-start-line="114" selection-end-line="114" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4319#4320#0" expanded="true" />
+                <element signature="e#4363#4364#0" expanded="true" />
+                <element signature="e#4412#4413#0" expanded="true" />
+                <element signature="e#4448#4449#0" expanded="true" />
+                <element signature="e#4497#4498#0" expanded="true" />
+                <element signature="e#4539#4540#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -204,8 +210,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="182" />
-    <option name="y" value="-20" />
+    <option name="x" value="101" />
+    <option name="y" value="141" />
     <option name="width" value="1546" />
     <option name="height" value="830" />
   </component>
@@ -650,8 +656,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/methods/Helpers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+        <state relative-caret-position="153">
+          <caret line="77" selection-start-line="77" selection-end-line="81" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#912#913#0" expanded="true" />
@@ -662,10 +668,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/cryptolens/models/LicenseKey.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="109" column="5" lean-forward="true" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+        <state relative-caret-position="362">
+          <caret line="114" selection-start-line="114" selection-end-line="114" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4319#4320#0" expanded="true" />
+            <element signature="e#4363#4364#0" expanded="true" />
+            <element signature="e#4412#4413#0" expanded="true" />
+            <element signature="e#4448#4449#0" expanded="true" />
+            <element signature="e#4497#4498#0" expanded="true" />
+            <element signature="e#4539#4540#0" expanded="true" />
           </folding>
         </state>
       </provider>

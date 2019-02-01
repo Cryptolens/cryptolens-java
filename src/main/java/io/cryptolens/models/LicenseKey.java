@@ -2,6 +2,7 @@ package io.cryptolens.models;
 
 import com.google.gson.Gson;
 import io.cryptolens.JavaSecuritySignatureVerifier;
+import io.cryptolens.methods.Helpers;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -108,4 +109,30 @@ public class LicenseKey {
 
         return license;
     }
+
+    /**
+     * Check if the current license has expired.
+     * @return True if it has expired and false otherwise.
+     */
+    public boolean HasExpired() {
+        return Helpers.HasExpired(this);
+    }
+
+    /**
+     * Check if the current license has not expired.
+     * @return True if it has not expired and false otherwise.
+     */
+    public boolean HasNotExpired() {
+        return Helpers.HasNotExpired(this);
+    }
+
+    /**
+     * Check if this license has a certain feature enabled (i.e. set to true).
+     * @param feature The feature, eg 1 to 8.
+     * @return If the feature is set to true, true is returned and false otherwise.
+     */
+    public boolean HasFeature(int feature) {
+        return Helpers.HasFeature(this, feature);
+    }
+
 }
