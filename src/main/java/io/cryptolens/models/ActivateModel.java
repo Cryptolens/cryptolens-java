@@ -52,6 +52,22 @@ public class ActivateModel {
         Key = key;
         MachineCode = machineCode;
     }
+
+    public ActivateModel(int productId, String key, String machineCode, int floatingTimeInterval) {
+        ProductId = productId;
+        Key = key;
+        MachineCode = machineCode;
+        FloatingTimeInterval = floatingTimeInterval;
+    }
+
+    public ActivateModel(int productId, String key, String machineCode, int floatingTimeInterval, int maxOverdraft) {
+        ProductId = productId;
+        Key = key;
+        MachineCode = machineCode;
+        FloatingTimeInterval = floatingTimeInterval;
+        MaxOverdraft = maxOverdraft;
+    }
+
     public ActivateModel(int productId, String key, String machineCode, int fieldsToReturn, boolean metadata, int floatingTimeInterval, int maxOverdraft) {
         ProductId = productId;
         Key = key;

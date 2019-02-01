@@ -54,3 +54,26 @@ When loading it back, we can use the code below:
 ```java
 LicenseKey newLicense = LicenseKey.LoadFromString(RSAPubKey, licenseString);
 ```
+
+### Floating licenses
+[Floating licenses](https://help.cryptolens.io/licensing-models/floating) can be enabled by passing a floatingTimeInterval to the `ActivateModel`. Optionally, you can also allow customers to exceed the bound by specifying the maxOverdraft.
+
+The code below has a floatingTimeInterval of 300 seconds and maxOverdraft set to 1. To support floating licenses with overdraft, the call to `Helpers.IsOnRightMachine(license, true, true)` needs two boolean flags to be set to true.
+
+```java
+import io.cryptolens.methods.*;
+import io.cryptolens.models.*;
+
+public static void main(String args[]) {
+    String RSAPubKey = "<RSAKeyValue><Modulus>sGbvxwdlDbqFXOMlVUnAF5ew0t0WpPW7rFpI5jHQOFkht/326dvh7t74RYeMpjy357NljouhpTLA3a6idnn4j6c3jmPWBkjZndGsPL4Bqm+fwE48nKpGPjkj4q/yzT4tHXBTyvaBjA8bVoCTnu+LiC4XEaLZRThGzIn5KQXKCigg6tQRy0GXE13XYFVz/x1mjFbT9/7dS8p85n8BuwlY5JvuBIQkKhuCNFfrUxBWyu87CFnXWjIupCD2VO/GbxaCvzrRjLZjAngLCMtZbYBALksqGPgTUN7ZM24XbPWyLtKPaXF2i4XRR9u6eTj5BfnLbKAU5PIVfjIS+vNYYogteQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
+    String auth = "WyIyNjA5IiwiaWE5b0VFT3Q2eDlNR2FvbHBHK2VOYUZ4bzNjT3h5UkNrMCtiYnhPRSJd";
+
+    LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(), 300, 1));
+    if (license == null || !Helpers.IsOnRightMachine(license, true, true)) {
+        System.out.println("The license does not work.");
+    } else {
+        System.out.println("The license is valid!");
+        System.out.println("It will expire: " + license.Expires);
+    }
+}
+```
