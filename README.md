@@ -55,6 +55,11 @@ When loading it back, we can use the code below:
 LicenseKey newLicense = LicenseKey.LoadFromString(RSAPubKey, licenseString);
 ```
 
+If you want to make sure that the license file is not too old, you can specify the maximum number of days as shown below (after 30 days, this method will return null).
+```java
+LicenseKey newLicense = LicenseKey.LoadFromString(RSAPubKey, licenseString, 30);
+```
+
 ### Floating licenses
 [Floating licenses](https://help.cryptolens.io/licensing-models/floating) can be enabled by passing a floatingTimeInterval to the `ActivateModel`. Optionally, you can also allow customers to exceed the bound by specifying the maxOverdraft.
 

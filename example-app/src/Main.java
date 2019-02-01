@@ -19,7 +19,7 @@ public class Main {
 
             // Saving and loading a license (for offline use)
             String licenseString = license.SaveAsString();
-            LicenseKey newLicense = LicenseKey.LoadFromString(RSAPubKey, licenseString);
+            LicenseKey newLicense = LicenseKey.LoadFromString(RSAPubKey, licenseString, 1);
 
             System.out.println(newLicense.Expires);
         }
