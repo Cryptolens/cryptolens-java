@@ -1,4 +1,4 @@
-package io.cryptolens;
+package io.cryptolens.legacy;
 
 import java.io.*;
 import java.nio.*;
@@ -19,7 +19,7 @@ import java.security.Signature;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Base64;
 import java.util.*;
-
+@Deprecated
 public class JavaSecuritySignatureVerifier {
   private BigInteger mod;
   private BigInteger exp;

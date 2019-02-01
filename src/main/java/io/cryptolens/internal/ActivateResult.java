@@ -1,4 +1,4 @@
-package io.cryptolens.models;
+package io.cryptolens.internal;
 
 public class ActivateResult extends BasicResult {
 

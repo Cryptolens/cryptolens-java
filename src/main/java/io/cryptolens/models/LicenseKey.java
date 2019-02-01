@@ -1,13 +1,17 @@
 package io.cryptolens.models;
 
 import com.google.gson.Gson;
-import io.cryptolens.JavaSecuritySignatureVerifier;
+import io.cryptolens.internal.ActivateResult;
+import io.cryptolens.legacy.JavaSecuritySignatureVerifier;
 import io.cryptolens.methods.Helpers;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
 
+/**
+ * Represents a license returned by Key.Activate.
+ */
 public class LicenseKey {
     public int ProductId;
     public long Id;

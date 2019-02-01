@@ -1,4 +1,4 @@
-package io.cryptolens;
+package io.cryptolens.legacy;
 
 import java.io.*;
 import java.nio.*;
@@ -19,18 +19,7 @@ import java.security.Signature;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Base64;
 import java.util.*;
-
-public class Base64Response {
-  public byte[] licenseKey;
-  public byte[] signature;
-  public String message;
-
-  Base64Response(String message) {
-    this.message = message;
-  }
-
-  Base64Response(byte[] licenseKey, byte[] signature) {
-    this.licenseKey = licenseKey;
-    this.signature = signature;
-  }
+@Deprecated
+public interface MachineCodeComputer {
+  public String computeMachineCode();
 }

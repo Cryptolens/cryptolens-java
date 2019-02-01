@@ -1,19 +1,17 @@
 package io.cryptolens.methods;
 
-import com.google.gson.Gson;
-import io.cryptolens.*;
 import io.cryptolens.internal.HelperMethods;
 import io.cryptolens.models.ActivateModel;
-import io.cryptolens.models.ActivateResult;
-import io.cryptolens.models.BasicResult;
+import io.cryptolens.internal.ActivateResult;
 import io.cryptolens.models.LicenseKey;
 
-import java.lang.reflect.Field;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A collection of methods that operate on a license key. Please see a complete
+ * list here: https://app.cryptolens.io/docs/api/v3/Key
+ */
 public class Key {
 
     /**

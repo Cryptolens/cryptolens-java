@@ -1,4 +1,4 @@
-package io.cryptolens;
+package io.cryptolens.legacy;
 
 import java.io.*;
 import java.nio.*;
@@ -19,8 +19,7 @@ import java.security.Signature;
 import java.security.spec.RSAPublicKeySpec;
 import java.util.Base64;
 import java.util.*;
-
-public interface ResponseParser {
-  public Base64Response parseBase64Response(String response);
-  public LicenseKey parseLicenseKey(byte[] licenseKey);
+@Deprecated
+public interface RequestHandler {
+  public String makePostRequest(String url, Map<String,String> params) throws Exception;
 }

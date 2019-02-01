@@ -1,13 +1,10 @@
 package io.cryptolens.internal;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import io.cryptolens.*;
-import io.cryptolens.models.ActivateResult;
-import io.cryptolens.models.BasicResult;
+import io.cryptolens.legacy.HttpsURLConnectionRequestHandler;
+import io.cryptolens.legacy.RequestHandler;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 

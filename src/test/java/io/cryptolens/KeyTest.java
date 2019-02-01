@@ -3,8 +3,6 @@ package io.cryptolens;
 import io.cryptolens.methods.Helpers;
 import io.cryptolens.methods.Key;
 import io.cryptolens.models.ActivateModel;
-import io.cryptolens.models.ActivateResult;
-import io.cryptolens.models.BasicResult;
 import io.cryptolens.models.LicenseKey;
 import junit.framework.Test;
 import junit.framework.TestCase;

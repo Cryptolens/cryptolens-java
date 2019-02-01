@@ -11,6 +11,9 @@ import oshi.software.os.OperatingSystem;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
+/**
+ * A collection of helper methods that operate on a license key.
+ */
 public class Helpers {
 
     /**
