@@ -3,6 +3,7 @@ package io.cryptolens;
 import io.cryptolens.methods.Helpers;
 import io.cryptolens.methods.Key;
 import io.cryptolens.models.ActivateModel;
+import io.cryptolens.models.DeactivateModel;
 import io.cryptolens.models.LicenseKey;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -57,7 +58,7 @@ public class KeyTest
             System.out.println(newLicense.Expires);
         }
 
-
+        //Key.Deactivate("", new DeactivateModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL", Helpers.GetMachineCode()));
 
         assertTrue( true );
 

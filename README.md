@@ -84,3 +84,40 @@ public static void main(String args[]) {
     }
 }
 ```
+
+### Deactivation
+In order to deactivate a license, we can call the `Key.Deactivate` method, as shown below:
+
+```java
+import io.cryptolens.methods.*;
+import io.cryptolens.models.*;
+
+public static void main(String args[]) {
+    String auth = "";
+
+    boolean result = Key.Deactivate(auth, new DeactivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode()));
+    if (result == true) {
+        System.out.println("Deactivation successful.");
+    } else {
+        System.out.println("Deactivation failed.");
+    }
+}
+```
+
+The call above is useful when [node-locking](https://help.cryptolens.io/licensing-models/node-locked) is used. If it's a floating license, deactivation is not necessary since licenses will be deactivated automatically after a certain period of time. However, to force a deactivation earlier, you can use similar code as above with addition of a boolean flag.
+
+```java
+import io.cryptolens.methods.*;
+import io.cryptolens.models.*;
+
+public static void main(String args[]) {
+    String auth = "";
+
+    boolean result = Key.Deactivate(auth, new DeactivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(), true));
+    if (result == true) {
+        System.out.println("Deactivation successful.");
+    } else {
+        System.out.println("Deactivation failed.");
+    }
+}
+```
