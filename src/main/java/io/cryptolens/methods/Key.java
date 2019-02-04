@@ -40,4 +40,8 @@ public class Key {
         return LicenseKey.LoadFromString(RSAPubKey, result.RawResponse);
     }
 
+    public static boolean Deactivate (String token) {
+        return false;
+    }
+
 }
