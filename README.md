@@ -86,7 +86,7 @@ public static void main(String args[]) {
 ```
 
 ### Deactivation
-In order to deactivate a license, we can call the `Key.Deactivate` method, as shown below:
+In order to deactivate a license, we can call the `Key.Deactivate` method, as shown below. Note, we need an access token with Deactivate permission, so the ones used in earlier examples cannot be used (unless they have this permission).
 
 ```java
 import io.cryptolens.methods.*;
