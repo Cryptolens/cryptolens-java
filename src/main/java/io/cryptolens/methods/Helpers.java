@@ -19,6 +19,7 @@ public class Helpers {
     /**
      * Returns a unique identifier of the device. Note, root access may be required.
      * Note, this method is not the same as the one used in our .NET client.
+     * Also, this method only works on desktop computers.
      */
     public static String GetMachineCode() {
 
@@ -56,6 +57,24 @@ public class Helpers {
     public static boolean IsOnRightMachine(LicenseKey license, boolean isFloatingLicense, boolean allowOverdraft) {
 
         String current_mid = Helpers.GetMachineCode();
+        return IsOnRightMachine(license, current_mid, isFloatingLicense, allowOverdraft);
+    }
+
+    /**
+     * Check if the device is registered with the license key. This method is useful for platforms where the
+     * GetMachineCode() is not supported, eg. on Android.
+     * @param license The license key object.
+     * @param machineCode The machine code of the current device.
+     * @param isFloatingLicense If this is a floating license, this parameter has to be set to true.
+     *                          You can enable floating licenses by setting @see ActivateModel.FloatingTimeInterval.
+     * @param allowOverdraft If floating licensing is enabled with overdraft, this parameter should be set to true.
+     *                       You can enable overdraft by setting ActivateModel.MaxOverdraft" to a value greater than 0.
+     *
+     * @returns True if the license is registered with this machine and False otherwise.
+     */
+    public static boolean IsOnRightMachine(LicenseKey license, String machineCode, boolean isFloatingLicense, boolean allowOverdraft) {
+
+        String current_mid = machineCode;
 
         if (license == null || license.ActivatedMachines == null){
             return false;
@@ -77,6 +96,7 @@ public class Helpers {
 
         return false;
     }
+
 
     /**
      * Check if the current license has expired.
