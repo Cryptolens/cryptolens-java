@@ -27,7 +27,7 @@ import java.util.Map;
  *
  * <p>Moreover, the manifest file needs to have internet permission, which can be added as shown below:</p>
  * <pre>
- * &lt;uses-permission android:name="android.permission.INTERNET"/\&gt;
+ * &lt;uses-permission android:name="android.permission.INTERNET"/&gt;
  *
  * &lt;application ....
  * </pre>
