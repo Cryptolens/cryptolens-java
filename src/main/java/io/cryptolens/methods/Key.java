@@ -11,8 +11,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * A collection of methods that operate on a license key. Please see a complete
- * list here: https://app.cryptolens.io/docs/api/v3/Key
+ * <p>A collection of methods that operate on a license key. Please see a complete
+ * list <a href="https://app.cryptolens.io/docs/api/v3/Key">here</a>.</p>
+ *
+ * <p><b>Note (for Android)</b>: it's important to run these methods asynchronously, as shown below:</p>
+ * <pre>
+ * Thread thread = new Thread(new Runnable() {
+ *     &#64;Override
+ *     public void run() {
+ *         // call eg. Key.Activate(...).
+ *     }
+ * });
+ * </pre>
+ *
+ * <p>Moreover, the manifest file needs to have internet permission, which can be added as shown below:</p>
+ * <pre>
+ * &lt;uses-permission android:name="android.permission.INTERNET"/\&gt;
+ *
+ * &lt;application ....
+ * </pre>
+ *
  */
 public class Key {
 
@@ -34,8 +52,12 @@ public class Key {
 
         ActivateResult result = HelperMethods.SendRequestToWebAPI("key/activate", model, extraParams, ActivateResult.class);
 
-        if(result.result == 1) {
-            System.err.println("The server returned an error: " + result.message);
+        if(result == null || result.result == 1) {
+            if(result != null) {
+                System.err.println("The server returned an error: " + result.message);
+            } else {
+                System.err.println("The server returned an error.");
+            }
             return null;
         }
 
@@ -57,8 +79,12 @@ public class Key {
 
         BasicResult result = HelperMethods.SendRequestToWebAPI("key/deactivate", model, extraParams, BasicResult.class);
 
-        if(result.result == 1) {
-            System.err.println("The server returned an error: " + result.message);
+        if(result == null || result.result == 1) {
+            if(result != null) {
+                System.err.println("The server returned an error: " + result.message);
+            } else {
+                System.err.println("The server returned an error.");
+            }
             return false;
         }
 

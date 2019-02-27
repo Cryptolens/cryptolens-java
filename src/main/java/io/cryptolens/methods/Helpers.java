@@ -13,6 +13,10 @@ import java.security.MessageDigest;
 
 /**
  * A collection of helper methods that operate on a license key.
+ *
+ * If you are using <b>cryptolens-android.jar</b>, please avoid using
+ * <b>GetMachineCode</b> and all versions of <b>IsOnRightMachine</b> that do not
+ * take in a custom machine code string.
  */
 public class Helpers {
 
@@ -28,7 +32,8 @@ public class Helpers {
 
     /**
      * Check if the device is registered with the license key.
-     * @returns True if the license is registered with this machine and False otherwise.
+     * @param license The license key object.
+     * @return True if the license is registered with this machine and False otherwise.
      */
     public static boolean IsOnRightMachine(LicenseKey license) {
         return IsOnRightMachine(license, false);
@@ -36,9 +41,10 @@ public class Helpers {
 
     /**
      * Check if the device is registered with the license key.
+     * @param license The license key object.
      * @param isFloatingLicense If this is a floating license, this parameter has to be set to true.
      *                          You can enable floating licenses by setting @see ActivateModel.FloatingTimeInterval.
-     * @returns True if the license is registered with this machine and False otherwise.
+     * @return True if the license is registered with this machine and False otherwise.
      */
     public static boolean IsOnRightMachine(LicenseKey license, boolean isFloatingLicense) {
         return IsOnRightMachine(license, isFloatingLicense, false);
@@ -52,7 +58,7 @@ public class Helpers {
      * @param allowOverdraft If floating licensing is enabled with overdraft, this parameter should be set to true.
      *                       You can enable overdraft by setting ActivateModel.MaxOverdraft" to a value greater than 0.
      *
-     * @returns True if the license is registered with this machine and False otherwise.
+     * @return True if the license is registered with this machine and False otherwise.
      */
     public static boolean IsOnRightMachine(LicenseKey license, boolean isFloatingLicense, boolean allowOverdraft) {
 
@@ -67,7 +73,7 @@ public class Helpers {
      * @param license The license key object.
      * @param machineCode The machine code of the current device.
      *
-     * @returns True if the license is registered with this machine and False otherwise.
+     * @return True if the license is registered with this machine and False otherwise.
      */
     public static boolean IsOnRightMachine(LicenseKey license, String machineCode) {
         return IsOnRightMachine(license, machineCode, false, false);
@@ -81,7 +87,7 @@ public class Helpers {
      * @param isFloatingLicense If this is a floating license, this parameter has to be set to true.
      *                          You can enable floating licenses by setting @see ActivateModel.FloatingTimeInterval.
      *
-     * @returns True if the license is registered with this machine and False otherwise.
+     * @return True if the license is registered with this machine and False otherwise.
      */
     public static boolean IsOnRightMachine(LicenseKey license, String machineCode, boolean isFloatingLicense) {
         return IsOnRightMachine(license, machineCode, isFloatingLicense, false);
@@ -97,7 +103,7 @@ public class Helpers {
      * @param allowOverdraft If floating licensing is enabled with overdraft, this parameter should be set to true.
      *                       You can enable overdraft by setting ActivateModel.MaxOverdraft" to a value greater than 0.
      *
-     * @returns True if the license is registered with this machine and False otherwise.
+     * @return True if the license is registered with this machine and False otherwise.
      */
     public static boolean IsOnRightMachine(LicenseKey license, String machineCode, boolean isFloatingLicense, boolean allowOverdraft) {
 

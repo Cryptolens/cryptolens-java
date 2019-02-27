@@ -57,6 +57,7 @@ public class LicenseKey {
      * Note, signature verification will be performed under the hood.
      * @param RSAPubKey Your RSA Public Key, which can be found <a href="https://app.cryptolens.io/docs/api/v3/QuickStart">here</a>.
      * @param licenseString The license key object stored as a string.
+     * @return A license key object from the 'licenseString'.
      */
     public static LicenseKey LoadFromString(String RSAPubKey, String licenseString) {
         return LoadFromString(RSAPubKey, licenseString, -1);
