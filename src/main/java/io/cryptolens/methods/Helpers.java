@@ -60,6 +60,33 @@ public class Helpers {
         return IsOnRightMachine(license, current_mid, isFloatingLicense, allowOverdraft);
     }
 
+
+    /**
+     * Check if the device is registered with the license key. This method is useful for platforms where the
+     * GetMachineCode() is not supported, eg. on Android.
+     * @param license The license key object.
+     * @param machineCode The machine code of the current device.
+     *
+     * @returns True if the license is registered with this machine and False otherwise.
+     */
+    public static boolean IsOnRightMachine(LicenseKey license, String machineCode) {
+        return IsOnRightMachine(license, machineCode, false, false);
+    }
+
+    /**
+     * Check if the device is registered with the license key. This method is useful for platforms where the
+     * GetMachineCode() is not supported, eg. on Android.
+     * @param license The license key object.
+     * @param machineCode The machine code of the current device.
+     * @param isFloatingLicense If this is a floating license, this parameter has to be set to true.
+     *                          You can enable floating licenses by setting @see ActivateModel.FloatingTimeInterval.
+     *
+     * @returns True if the license is registered with this machine and False otherwise.
+     */
+    public static boolean IsOnRightMachine(LicenseKey license, String machineCode, boolean isFloatingLicense) {
+        return IsOnRightMachine(license, machineCode, isFloatingLicense, false);
+    }
+
     /**
      * Check if the device is registered with the license key. This method is useful for platforms where the
      * GetMachineCode() is not supported, eg. on Android.
