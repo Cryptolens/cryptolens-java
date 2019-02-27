@@ -22,6 +22,7 @@ import java.util.Map;
  *         // call eg. Key.Activate(...).
  *     }
  * });
+ * thread.start();
  * </pre>
  *
  * <p>Moreover, the manifest file needs to have internet permission, which can be added as shown below:</p>
