@@ -3,6 +3,7 @@ package io.cryptolens.models;
 import com.google.gson.Gson;
 import io.cryptolens.internal.ActivateResult;
 import io.cryptolens.legacy.JavaSecuritySignatureVerifier;
+import io.cryptolens.legacy.Shared;
 import io.cryptolens.methods.Helpers;
 
 import java.nio.charset.StandardCharsets;
@@ -77,10 +78,8 @@ public class LicenseKey {
 
         ActivateResult result = new Gson().fromJson(licenseString, ActivateResult.class);
 
-        Base64.Decoder decoder = Base64.getDecoder();
-
-        byte[] licenseKey = decoder.decode(result.licenseKey);
-        byte[] signature = decoder.decode(result.signature);
+        byte[] licenseKey = Shared.defaultBase64Decoder(result.licenseKey);
+        byte[] signature = Shared.defaultBase64Decoder(result.signature);
 
         try {
 

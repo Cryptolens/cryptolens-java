@@ -81,10 +81,9 @@ public class GsonResponseParser implements ResponseParser {
 
     if (resp.result != 0) { return new Base64Response(resp.message); }
 
-    Base64.Decoder decoder = Base64.getDecoder();
 
-    byte[] licenseKey = decoder.decode(resp.licenseKey);
-    byte[] signature  = decoder.decode(resp.signature);
+    byte[] licenseKey = Shared.defaultBase64Decoder(resp.licenseKey);
+    byte[] signature  = Shared.defaultBase64Decoder(resp.signature);
 
     return new Base64Response(licenseKey, signature);
   }

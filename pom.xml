@@ -29,5 +29,10 @@
       <artifactId>oshi-core</artifactId>
       <version>LATEST</version>
     </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>LATEST</version>
+    </dependency>
   </dependencies>
 </project>

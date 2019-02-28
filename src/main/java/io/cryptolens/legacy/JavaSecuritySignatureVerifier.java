@@ -4,11 +4,10 @@ import java.io.*;
 import java.nio.*;
 import java.nio.charset.*;
 import java.net.*;
-import java.util.*;
 
-import javax.net.ssl.*;
 
 import com.google.gson.*;
+import org.apache.commons.codec.binary.BaseNCodec;
 
 import java.math.BigInteger;
 import java.security.*;
@@ -17,8 +16,8 @@ import java.security.PublicKey;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.spec.RSAPublicKeySpec;
-import java.util.Base64;
-import java.util.*;
+
+
 @Deprecated
 public class JavaSecuritySignatureVerifier {
   private BigInteger mod;
@@ -37,14 +36,11 @@ public class JavaSecuritySignatureVerifier {
   }
 
   public void setExponentBase64(String exponent) {
-    Base64.Decoder decoder = Base64.getDecoder();
-    byte[] bytes = decoder.decode(exponent.getBytes());
-    exp = new BigInteger(1, bytes);
+
+    exp = new BigInteger(1, Shared.defaultBase64Decoder(exponent));
   }
 
   public void setModulusBase64(String modulus) {
-    Base64.Decoder decoder = Base64.getDecoder();
-    byte[] bytes = decoder.decode(modulus.getBytes());
-    mod = new BigInteger(1, bytes);
+    mod = new BigInteger(1, Shared.defaultBase64Decoder(modulus));
   }
 }

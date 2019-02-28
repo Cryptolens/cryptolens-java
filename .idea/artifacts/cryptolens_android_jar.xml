@@ -4,6 +4,7 @@
     <root id="archive" name="cryptolens-android.jar">
       <element id="module-output" name="cryptolens-java" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.12" />
     </root>
   </artifact>
 </component>
