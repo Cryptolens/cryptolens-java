@@ -17,12 +17,24 @@ public class Data {
         return HelperMethods.SendRequestToWebAPI("data/AddDataObjectToKey", model, extraParams, BasicResult.class);
     }
 
-    public static BasicResult ListDataObjects(String token, ListDataObjectsToKeyModel model) {
+    public static ListOfDataObjectsResult ListDataObjects(String token, ListDataObjectsToKeyModel model) {
 
         Map<String,String> extraParams = new HashMap<>();
 
         extraParams.put("token", token);
 
-        return HelperMethods.SendRequestToWebAPI("data/AddDataObjectToKey", model, extraParams, BasicResult.class);
+        return HelperMethods.SendRequestToWebAPI("data/listdataobjectstokey", model, extraParams, ListOfDataObjectsResult.class);
     }
+
+
+    public static ListOfDataObjectsResult SetIntValue(String token, ChangeIntValueToKeyModel model) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("data/listdataobjectstokey", model, extraParams, ListOfDataObjectsResult.class);
+    }
+
+
 }
