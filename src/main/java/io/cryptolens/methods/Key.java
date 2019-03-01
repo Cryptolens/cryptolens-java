@@ -2,10 +2,8 @@ package io.cryptolens.methods;
 
 import io.cryptolens.internal.BasicResult;
 import io.cryptolens.internal.HelperMethods;
-import io.cryptolens.models.ActivateModel;
+import io.cryptolens.models.*;
 import io.cryptolens.internal.ActivateResult;
-import io.cryptolens.models.DeactivateModel;
-import io.cryptolens.models.LicenseKey;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -92,4 +90,24 @@ public class Key {
         return true;
     }
 
+    /**
+     * <p>This method creates a license key that is time-limited, <a href="https://help.cryptolens.io/licensing-models/node-locked" target="_blank">node-locked</a>
+     * and with the "Time-Limited" and "Trial" features set to true (which can be set by editing the
+     * <a href="https://help.cryptolens.io/web-interface/feature-definitions" target="_blank">feature definitions</a> on the product page).
+     * Note, by default, the trial will work for 15 days. To change this limit, you can set the <b>Feature Lock</b>
+     * to the desired value, when creating the access token.</p>
+     *
+     * <p>If a trial key was already created for a certain machine code, this method will try to find the license
+     * key and return it instead. However, this will only occur if the license key is still a trial key (based
+     * on feature definitions) and is not blocked.</p>
+     * @param token The access token with 'CreateTrialKey' permission.
+     * @param model Method parameters.
+     * @return A new license key or error message.
+     */
+    public static CreateKeyResult CreateTrialKey(String token, CreateTrialKeyModel model) {
+        Map<String,String> extraParams = new HashMap<>();
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("key/createtrialkey", model, extraParams, CreateKeyResult.class);
+    }
 }
