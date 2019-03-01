@@ -5,16 +5,17 @@ import io.cryptolens.legacy.HttpsURLConnectionRequestHandler;
 import io.cryptolens.legacy.RequestHandler;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class HelperMethods {
 
     public static <T extends BasicResult> T SendRequestToWebAPI(String method, Object model, Map<String,String> extraParams, Class<T> clazz) {
 
         Map<String,String> params = new HashMap<>();
+        List<Field> allFields = new ArrayList<>();
+        getAllFields(allFields, model.getClass());
 
-        for(Field field : model.getClass().getDeclaredFields()) {
+        for(Field field : allFields) {
             field.setAccessible(true);
             try {
                 Object value = field.get(model);
@@ -46,5 +47,16 @@ public class HelperMethods {
         }
 
         return  null;
+    }
+
+    // from: https://stackoverflow.com/a/1042827/1275924
+    private static List<Field> getAllFields(List<Field> fields, Class<?> type) {
+        fields.addAll(Arrays.asList(type.getDeclaredFields()));
+
+        if (type.getSuperclass() != null) {
+            getAllFields(fields, type.getSuperclass());
+        }
+
+        return fields;
     }
 }

@@ -1,5 +1,6 @@
 package io.cryptolens.methods;
 
+import io.cryptolens.internal.BasicResult;
 import io.cryptolens.models.ActivatedMachine;
 import io.cryptolens.models.LicenseKey;
 import oshi.SystemInfo;
@@ -219,6 +220,17 @@ public class Helpers {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    /**
+     * Checks if a response from Cryptolens is successful.
+     * @param result The response from an API call. All responses inherit from BasicResult.
+     * @return True if the response is successful and false otherwise.
+     */
+    public static boolean IsSuccessful(BasicResult result) {
+        if(result == null || result.result == 1)
+            return false;
+        return true;
     }
 
     private static String getRawDeviceID()
