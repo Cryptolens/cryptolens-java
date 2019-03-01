@@ -64,7 +64,11 @@ public class Data {
     }
 
     public static BasicResult IncrementIntValue(String token, LicenseKey license, long id, int intValue) {
-        return IncrementIntValue(token, new IncrementIntValueToKeyModel(license.ProductId, license.Key, id, intValue));
+        return IncrementIntValue(token, new IncrementIntValueToKeyModel(license.ProductId, license.Key, id, intValue, false, 0));
+    }
+
+    public static BasicResult IncrementIntValue(String token, LicenseKey license, long id, int intValue, boolean enableBound, int bound) {
+        return IncrementIntValue(token, new IncrementIntValueToKeyModel(license.ProductId, license.Key, id, intValue, enableBound, bound));
     }
 
     public static BasicResult IncrementIntValue(String token, IncrementIntValueToKeyModel model) {
@@ -77,7 +81,11 @@ public class Data {
     }
 
     public static BasicResult DecrementIntValue(String token, LicenseKey license, long id, int intValue) {
-        return DecrementIntValue(token, new DecrementIntValueToKeyModel(license.ProductId, license.Key, id, intValue));
+        return DecrementIntValue(token, new DecrementIntValueToKeyModel(license.ProductId, license.Key, id, intValue, false, 0));
+    }
+
+    public static BasicResult DecrementIntValue(String token, LicenseKey license, long id, int intValue, boolean enableBound, int bound) {
+        return DecrementIntValue(token, new DecrementIntValueToKeyModel(license.ProductId, license.Key, id, intValue, enableBound, bound));
     }
 
     public static BasicResult DecrementIntValue(String token, DecrementIntValueToKeyModel model) {

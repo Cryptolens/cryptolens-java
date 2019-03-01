@@ -1,9 +1,11 @@
 package io.cryptolens.models;
 
+import com.google.gson.annotations.SerializedName;
 import io.cryptolens.internal.BasicResult;
 
 import java.util.List;
 
 public class ListOfDataObjectsResult extends BasicResult {
-    public List<DataObject> dataObjects;
+    @SerializedName(value = "dataObjects", alternate = {"DataObjects"})
+    public List<DataObject> DataObjects;
 }
