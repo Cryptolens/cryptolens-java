@@ -76,10 +76,16 @@ public class LicenseKey {
      */
     public static LicenseKey LoadFromString(String RSAPubKey, String licenseString, int signatureExpirationInterval) {
 
-        ActivateResult result = new Gson().fromJson(licenseString, ActivateResult.class);
-
-        byte[] licenseKey = Shared.defaultBase64Decoder(result.licenseKey);
-        byte[] signature = Shared.defaultBase64Decoder(result.signature);
+        ActivateResult result = null;
+        byte[] licenseKey;
+        byte[] signature;
+        try{
+            result = new Gson().fromJson(licenseString, ActivateResult.class);
+            licenseKey = Shared.defaultBase64Decoder(result.licenseKey);
+            signature = Shared.defaultBase64Decoder(result.signature);
+        } catch (Exception ex) {
+            System.err.println(ex.getStackTrace()); return null;
+        }
 
         try {
 
