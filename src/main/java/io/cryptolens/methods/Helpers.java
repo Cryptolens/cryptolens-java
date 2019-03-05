@@ -1,5 +1,7 @@
 package io.cryptolens.methods;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import io.cryptolens.internal.BasicResult;
 import io.cryptolens.models.ActivatedMachine;
 import io.cryptolens.models.LicenseKey;
@@ -9,8 +11,11 @@ import oshi.hardware.ComputerSystem;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.software.os.OperatingSystem;
 
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * A collection of helper methods that operate on a license key.
@@ -191,6 +196,24 @@ public class Helpers {
         if (feature == 8 && licenseKey.F8)
             return true;
 
+        return false;
+    }
+
+    /**
+     * Use the notes field to determine if a certain feature exists (instead of the 8 feature flags).
+     * The notes field needs to be formatted as JSON array, eg. ["f1", "f2"] means f1 and f2 are true.
+     * @param licenseKey a license key object.
+     * @param featureName the name of the feature (case-sensitive).
+     * @return True if the feature exists and false otherwise.
+     */
+    public static boolean HasFeature(LicenseKey licenseKey, String featureName) {
+
+        Type type = new TypeToken<HashSet<String>>(){}.getType();
+        HashSet<String> features = new Gson().fromJson(licenseKey.Notes, type);
+
+        if (features != null && features.contains(featureName)) {
+            return true;
+        }
         return false;
     }
 
