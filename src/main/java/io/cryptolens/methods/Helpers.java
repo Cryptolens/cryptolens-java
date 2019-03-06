@@ -1,9 +1,8 @@
 package io.cryptolens.methods;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
+
 import io.cryptolens.internal.BasicResult;
 import io.cryptolens.models.ActivatedMachine;
 import io.cryptolens.models.LicenseKey;
@@ -13,11 +12,9 @@ import oshi.hardware.ComputerSystem;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.software.os.OperatingSystem;
 
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.util.HashMap;
-import java.util.HashSet;
+
 
 /**
  * A collection of helper methods that operate on a license key.
@@ -209,10 +206,11 @@ public class Helpers {
 
     /**
      * <p>Uses the notes field to determine if a certain feature exists (instead of the 8 feature flags).</p>
-     * <p><strong>Formatting: </strong> <p>The notes field needs to be formatted as a JSON array of strings or objects that contain </p>
-     * For example, ["f1", "f2"] means f1 and f2 are true. You can also have feature bundling, eg. ["f1", {"f2": ["voice","image"]}],
+     * <p><strong>Formatting: </strong> <p>The notes field needs to be formatted as a JSON array of strings or of JSON arrays
+     * where the first element specifies the feature name and the second element is a list of features.</p>
+     * For example, ["f1", "f2"] means f1 and f2 are true. You can also have feature bundling, eg. ["f1", ["f2",["voice","image"]]],
      * which means that f1 and f2 are true, as well as f2.limited and f2.image. You can set any depth, eg. you can have
-     * ["f1", {"f2":[{"voice":["all"]}, "image"]}] means f2.voice.all is true as well as f2.voice and f2.
+     * ["f1", ["f2",[["voice",["all"]], "image"]]] means f2.voice.all is true as well as f2.voice and f2.
      * The dots symbol is used to specify the "sub-features".
      * </p>
      * @param licenseKey a license key object.
@@ -227,13 +225,14 @@ public class Helpers {
 
         boolean found = false;
         for(int i = 0; i < featurePath.length; i++) {
+            found = false;
             int index = -1;
             for(int j = 0; j < array.size(); j++) {
 
-                if(!array.get(j).isJsonObject() && array.get(j).getAsString().equals(featurePath[i])) {
+                if(!array.get(j).isJsonArray() && array.get(j).getAsString().equals(featurePath[i])) {
                     found = true;
                     break;
-                } else if (array.get(j).isJsonObject() && array.get(j).getAsJsonObject().keySet().contains(featurePath[i])){
+                } else if (array.get(j).isJsonArray() && array.get(j).getAsJsonArray().get(0).getAsString().equals(featurePath[i])){
                     found = true;
                     index = j;
                     break;
@@ -244,8 +243,9 @@ public class Helpers {
             }
             if(i + 1 < featurePath.length && index != -1) {
                 // still have some sub features to go through.
-                array = array.get(index).getAsJsonObject().get(featurePath[i]).getAsJsonArray();
-                found = false;
+                // TODO: need to check if it's actually a json array or null?
+                // TODO: try catch
+                array = array.get(index).getAsJsonArray().get(1).getAsJsonArray();
             }
         }
 
