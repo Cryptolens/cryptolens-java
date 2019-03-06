@@ -1,6 +1,8 @@
 package io.cryptolens.methods;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import io.cryptolens.internal.BasicResult;
 import io.cryptolens.models.ActivatedMachine;
@@ -199,22 +201,58 @@ public class Helpers {
         return false;
     }
 
+    public class MyClass<T>
+    {
+        //public String par1;
+        public T par2;
+    }
+
     /**
-     * Use the notes field to determine if a certain feature exists (instead of the 8 feature flags).
-     * The notes field needs to be formatted as JSON array, eg. ["f1", "f2"] means f1 and f2 are true.
+     * <p>Uses the notes field to determine if a certain feature exists (instead of the 8 feature flags).</p>
+     * <p><strong>Formatting: </strong> <p>The notes field needs to be formatted as a JSON array of strings or objects that contain </p>
+     * For example, ["f1", "f2"] means f1 and f2 are true. You can also have feature bundling, eg. ["f1", {"f2": ["voice","image"]}],
+     * which means that f1 and f2 are true, as well as f2.limited and f2.image. You can set any depth, eg. you can have
+     * ["f1", {"f2":[{"voice":["all"]}, "image"]}] means f2.voice.all is true as well as f2.voice and f2.
+     * The dots symbol is used to specify the "sub-features".
+     * </p>
      * @param licenseKey a license key object.
      * @param featureName the name of the feature (case-sensitive).
      * @return True if the feature exists and false otherwise.
      */
     public static boolean HasFeature(LicenseKey licenseKey, String featureName) {
 
-        Type type = new TypeToken<HashSet<String>>(){}.getType();
-        HashSet<String> features = new Gson().fromJson(licenseKey.Notes, type);
+        JsonParser parser = new JsonParser();
+        JsonArray array = parser.parse(licenseKey.Notes).getAsJsonArray();
+        String[] featurePath = featureName.split("\\.");
 
-        if (features != null && features.contains(featureName)) {
-            return true;
+        boolean found = false;
+        for(int i = 0; i < featurePath.length; i++) {
+            int index = -1;
+            for(int j = 0; j < array.size(); j++) {
+
+                if(!array.get(j).isJsonObject() && array.get(j).getAsString().equals(featurePath[i])) {
+                    found = true;
+                    break;
+                } else if (array.get(j).isJsonObject() && array.get(j).getAsJsonObject().keySet().contains(featurePath[i])){
+                    found = true;
+                    index = j;
+                    break;
+                }
+            }
+            if(!found){
+                return false;
+            }
+            if(i + 1 < featurePath.length && index != -1) {
+                // still have some sub features to go through.
+                array = array.get(index).getAsJsonObject().get(featurePath[i]).getAsJsonArray();
+                found = false;
+            }
         }
-        return false;
+
+        if(!found){
+            return false;
+        }
+        return true;
     }
 
     /**

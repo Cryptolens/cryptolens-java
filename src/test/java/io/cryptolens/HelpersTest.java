@@ -36,8 +36,19 @@ public class HelpersTest
     public void testApp()
     {
         LicenseKey license = new LicenseKey();
-        license.Notes = "[\"test\"]";
+        license.Notes = "[\"test\", {\"module\":[\"A\"]}]";
 
         assertTrue(Helpers.HasFeature(license, "test"));
+        assertTrue(Helpers.HasFeature(license, "module"));
+        assertTrue(Helpers.HasFeature(license, "module.A"));
+        assertFalse(Helpers.HasFeature(license, "module.B"));
+
+        license.Notes = "[\"f1\", {\"f2\":[{\"voice\":[\"all\"]}]}]";
+
+        assertTrue(Helpers.HasFeature(license, "f2.voice.all"));
+
+
+        String[] featurePath = "moduleA.video".split(".");
+
     }
 }
