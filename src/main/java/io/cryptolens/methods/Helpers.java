@@ -206,13 +206,12 @@ public class Helpers {
 
     /**
      * <p>Uses the notes field to determine if a certain feature exists (instead of the 8 feature flags).</p>
-     * <p><strong>Formatting: </strong> <p>The notes field needs to be formatted as a JSON array of strings or of JSON arrays
+     * <p><strong>Formatting: </strong> The notes field needs to be formatted as a JSON array of strings or of JSON arrays
      * where the first element specifies the feature name and the second element is a list of features.</p>
-     * For example, ["f1", "f2"] means f1 and f2 are true. You can also have feature bundling, eg. ["f1", ["f2",["voice","image"]]],
-     * which means that f1 and f2 are true, as well as f2.limited and f2.image. You can set any depth, eg. you can have
-     * ["f1", ["f2",[["voice",["all"]], "image"]]] means f2.voice.all is true as well as f2.voice and f2.
-     * The dots symbol is used to specify the "sub-features".
-     * </p>
+     * <p>For example,</p> <pre>["f1", "f2"]</pre><p>means f1 and f2 are true. You can also have feature bundling, eg. </p> <pre>["f1", ["f2",["voice","image"]]]</pre>
+     * <p>which means that f1 and f2 are true, as well as f2.limited and f2.image. You can set any depth, eg. you can have</p>
+     * <pre>["f1", ["f2",[["voice",["all"]], "image"]]]</pre> <p>means f2.voice.all is true as well as f2.voice and f2.
+     * The dots symbol is used to specify the "sub-features". </p>
      * @param licenseKey a license key object.
      * @param featureName the name of the feature (case-sensitive).
      * @return True if the feature exists and false otherwise.
