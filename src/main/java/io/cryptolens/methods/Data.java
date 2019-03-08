@@ -39,6 +39,15 @@ public class Data {
         return HelperMethods.SendRequestToWebAPI("data/AddDataObjectToKey", model, extraParams, BasicResult.class);
     }
 
+    public static BasicResult AddDataObject(String token, AddDataObjectToMachineCodeModel model) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("data/AddDataObjectToMachineCode", model, extraParams, BasicResult.class);
+    }
+
     /**
      * List data objects of a certain license.
      * @param token The access token with 'ListDataObjects' permission and KeyLock set to '-1'.
@@ -69,6 +78,15 @@ public class Data {
         return HelperMethods.SendRequestToWebAPI("data/listdataobjectstokey", model, extraParams, ListOfDataObjectsResult.class);
     }
 
+    public static ListOfDataObjectsResult ListDataObjects(String token, ListDataObjectsToMachineCodeModel model) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("data/listdataobjectstomachinecode", model, extraParams, ListOfDataObjectsResult.class);
+    }
+
     /**
      * This method will assign a new integer value to a Data Object.
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
@@ -88,6 +106,15 @@ public class Data {
         extraParams.put("token", token);
 
         return HelperMethods.SendRequestToWebAPI("data/setintvaluetokey", model, extraParams, BasicResult.class);
+    }
+
+    public static BasicResult SetIntValue(String token, SetIntValueToMachineCodeModel model) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("data/setintvaluetomachinecode", model, extraParams, BasicResult.class);
     }
 
     /**
@@ -141,6 +168,15 @@ public class Data {
         extraParams.put("token", token);
 
         return HelperMethods.SendRequestToWebAPI("data/incrementintvaluetokey", model, extraParams, BasicResult.class);
+    }
+
+    public static BasicResult IncrementIntValue(String token, IncrementIntValueToMachineCodeModel model) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("data/incrementintvaluetomachinecode", model, extraParams, BasicResult.class);
     }
 
     /**
@@ -197,6 +233,15 @@ public class Data {
         return HelperMethods.SendRequestToWebAPI("data/decrementintvaluetokey", model, extraParams, BasicResult.class);
     }
 
+    public static BasicResult DecrementIntValue(String token, DecrementIntValueToMachineCodeModel model) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("data/decrementintvaluetomachinecode", model, extraParams, BasicResult.class);
+    }
+
     /**
      * This method will assign a new string value to a Data Object.
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
@@ -218,6 +263,15 @@ public class Data {
         return HelperMethods.SendRequestToWebAPI("data/setstringvaluetokey", model, extraParams, BasicResult.class);
     }
 
+    public static BasicResult SetStringValue(String token, SetStringValueToMachineCodeModel model) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("data/setstringvaluetomachinecode", model, extraParams, BasicResult.class);
+    }
+
     /**
      * This method will remove an existing Data Object.
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
@@ -236,5 +290,14 @@ public class Data {
         extraParams.put("token", token);
 
         return HelperMethods.SendRequestToWebAPI("data/removedataobjecttokey", model, extraParams, BasicResult.class);
+    }
+
+    public static BasicResult RemoveDataObject(String token, RemoveDataObjectToMachineCodeModel model) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        extraParams.put("token", token);
+
+        return HelperMethods.SendRequestToWebAPI("data/removedataobjecttomachinecode", model, extraParams, BasicResult.class);
     }
 }
