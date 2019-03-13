@@ -1,6 +1,7 @@
 package io.cryptolens.models;
 
-public class SetIntValueToKeyModel extends ProductAndKeyModel {
+public class SetIntValueToMachineCodeModel extends ProductKeyMachineCodeModel {
+
     /**
      * The unique object id for the data object.
      */
@@ -10,10 +11,12 @@ public class SetIntValueToKeyModel extends ProductAndKeyModel {
      */
     public int IntValue;
 
-    public SetIntValueToKeyModel(int productId, String key, long id, int intValue) {
+
+    public SetIntValueToMachineCodeModel(int productId, String key, String machineCode, long id, int intValue) {
         Id = id;
         IntValue = intValue;
         this.ProductId = productId;
         this.Key = key;
+        this.MachineCode = machineCode;
     }
 }

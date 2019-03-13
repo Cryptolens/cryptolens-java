@@ -1,6 +1,6 @@
 package io.cryptolens.models;
 
-public class SetStringValueToKeyModel extends ProductAndKeyModel {
+public class SetStringValueToMachineCodeModel extends ProductKeyMachineCodeModel {
 
     /**
      * The unique object id for the data object.
@@ -11,11 +11,11 @@ public class SetStringValueToKeyModel extends ProductAndKeyModel {
      * A string value (text) to store. Max 10000 characters.
      */
     public String StringValue;
-
-    public SetStringValueToKeyModel(int productId, String key, long id, String stringValue) {
+    public SetStringValueToMachineCodeModel(int productId, String key, String machineCode, long id, String stringValue) {
         Id = id;
         StringValue = stringValue;
         this.ProductId = productId;
         this.Key = key;
+        this.MachineCode = machineCode;
     }
 }

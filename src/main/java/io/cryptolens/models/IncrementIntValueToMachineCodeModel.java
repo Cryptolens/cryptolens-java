@@ -1,6 +1,7 @@
 package io.cryptolens.models;
 
-public class IncrementIntValueToKeyModel extends ProductAndKeyModel {
+public class IncrementIntValueToMachineCodeModel extends ProductKeyMachineCodeModel {
+
     /**
      * 	The unique object id for the data object.
      */
@@ -24,12 +25,13 @@ public class IncrementIntValueToKeyModel extends ProductAndKeyModel {
      */
     public int Bound;
 
-    public IncrementIntValueToKeyModel(int productId, String key, long id, int intValue, boolean enableBound, int bound) {
+    public IncrementIntValueToMachineCodeModel(int productId, String key, String machineCode, long id, int intValue, boolean enableBound, int bound) {
         Id = id;
         this.IntValue = intValue;
         this.ProductId = productId;
         this.Key = key;
         this.EnableBound = enableBound;
         this.Bound = bound;
+        this.MachineCode = machineCode;
     }
 }
