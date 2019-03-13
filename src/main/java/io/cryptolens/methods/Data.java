@@ -9,12 +9,16 @@ import java.util.Map;
 
 /**
  * <p>The following methods allow you to work with data objects (aka. metadata or custom variables) associated with a
- * license key. Data objects can be used to store specific properties that (eg. username, OS version). More importantly
+ * license key or a machine code (i.e. an activation). Data objects can be used to store specific properties (eg. username, OS version). More importantly
  * though, they are used if you plan to implement a <a href="https://help.cryptolens.io/licensing-models/usage-based" target="_blank">usage-based licensing model</a>.
  * </p>
  *
  * <p><b>Access token remarks:</b> When you create an access token for any of the methods below, we recommend to <u>specify the product</u>
  * and to set the <u>keylock to <b>-1</b></u>.</p>
+ *
+ * <p><b>Remarks for machine code data objects:</b> In order to work with data objects associated with a machine code, the machine code needs
+ * to be assigned to a license key. After deactivation, it will not be possible to retrieve the data objects using the methods below (it is,
+ * however, possible to retrieve them using the Web API).</p>
  */
 public class Data {
     /**
