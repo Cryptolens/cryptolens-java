@@ -56,21 +56,11 @@ public class Data {
 
     public static BasicResult AddDataObject(String token, AddDataObjectToMachineCodeModel model) {
 
-        Map<String,String> extraParams = new HashMap<>();
+        Map<String, String> extraParams = new HashMap<>();
 
         extraParams.put("token", token);
 
         return HelperMethods.SendRequestToWebAPI("data/AddDataObjectToMachineCode", model, extraParams, BasicResult.class);
-    }
-
-    /**
-     * List data objects of a certain license.
-     * @param token The access token with 'ListDataObjects' permission and KeyLock set to '-1'.
-     * @param license The license key object (it's used to get the product id and key string).
-     * @return
-     */
-    public static ListOfDataObjectsResult ListDataObjects(String token, LicenseKey license) {
-        return ListDataObjects(token, new ListDataObjectsToKeyModel(license.ProductId, license.Key, ""));
     }
 
     /**

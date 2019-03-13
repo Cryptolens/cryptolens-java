@@ -31,6 +31,7 @@ public class DataTest
 
     HashMap<String, String> APIKey = null;
     LicenseKey license = null;
+    String machineCode = "2FE620C9C62F6A8BBD17F2AF49E12434B7C2CFC67FD2F48C2CB090893C4B4694";
 
     /**
      * Create the test case
@@ -79,7 +80,7 @@ public class DataTest
             fail("Could not add a new data object");
         }
 
-        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license);
+        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license, "");
 
         if(!Helpers.IsSuccessful(listResult)) {
             fail("Could not list data objects");
@@ -91,14 +92,14 @@ public class DataTest
 
         int currentVal = dObj.IntValue;
         BasicResult incrementResult = Data.IncrementIntValue(APIKey.get("data"), license, dObj.Id, 1);
-        listResult = Data.ListDataObjects(APIKey.get("data"), license);
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, "");
 
         if(!Helpers.IsSuccessful(incrementResult) || listResult.DataObjects.get(0).IntValue != currentVal + 1) {
             fail("Could not increment the data object.");
         }
 
         BasicResult decrementResult = Data.DecrementIntValue(APIKey.get("data"), license, dObj.Id, 1);
-        listResult = Data.ListDataObjects(APIKey.get("data"), license);
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, "");
 
         if(!Helpers.IsSuccessful(decrementResult) || listResult.DataObjects.get(0).IntValue != currentVal) {
             fail("Could not increment the data object.");
@@ -106,6 +107,54 @@ public class DataTest
 
         BasicResult removeResult = Data.RemoveDataObject(APIKey.get("data"), license, dObj.Id);
         if(!Helpers.IsSuccessful(removeResult)) {
+            fail("Could not increment the data object.");
+        }
+
+    }
+
+    public void testAdd2() throws Exception{
+
+        init();
+
+        BasicResult addResult = Data.AddDataObject(APIKey.get("data"), license, machineCode, "test", 3, "test");
+
+        if(!Helpers.IsSuccessful(addResult)) {
+            fail("Could not add a new data object");
+        }
+
+        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "");
+
+        if(!Helpers.IsSuccessful(listResult)) {
+            fail("Could not list data objects");
+        }
+
+        int count = listResult.DataObjects.size();
+
+        DataObject dObj = listResult.DataObjects.get(0);
+
+        int currentVal = dObj.IntValue;
+        BasicResult incrementResult = Data.IncrementIntValue(APIKey.get("data"), license, machineCode, dObj.Id, 1);
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "");
+
+        if(!Helpers.IsSuccessful(incrementResult) || listResult.DataObjects.get(0).IntValue != currentVal + 1) {
+            fail("Could not increment the data object.");
+        }
+
+        BasicResult decrementResult = Data.DecrementIntValue(APIKey.get("data"), license, machineCode, dObj.Id, 1);
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "");
+
+        if(!Helpers.IsSuccessful(decrementResult) || listResult.DataObjects.get(0).IntValue != currentVal) {
+            fail("Could not increment the data object.");
+        }
+
+        BasicResult removeResult = Data.RemoveDataObject(APIKey.get("data"), license, machineCode, dObj.Id);
+        if(!Helpers.IsSuccessful(removeResult)) {
+            fail("Could not increment the data object.");
+        }
+
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "");
+
+        if(!Helpers.IsSuccessful(removeResult) || listResult.DataObjects.size() != count - 1) {
             fail("Could not increment the data object.");
         }
 
