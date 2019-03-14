@@ -124,6 +124,18 @@ public class Data {
      * This method will assign a new integer value to a Data Object.
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
+     * @param name The name of the data object.
+     * @param intValue The new int value that should be assigned to the data object.
+     * @return
+     */
+    public static BasicResult SetIntValue(String token, LicenseKey license, String name, int intValue) {
+        return SetIntValue(token, new SetIntValueToKeyModel(license.ProductId, license.Key, name, intValue));
+    }
+
+    /**
+     * This method will assign a new integer value to a Data Object.
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
      * @param machineCode The machine code.
      * @param id The unique object id for the data object.
      * @param intValue The new int value that should be assigned to the data object.
@@ -131,6 +143,19 @@ public class Data {
      */
     public static BasicResult SetIntValue(String token, LicenseKey license, String machineCode, long id, int intValue) {
         return SetIntValue(token, new SetIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, id, intValue));
+    }
+
+    /**
+     * This method will assign a new integer value to a Data Object.
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param machineCode The machine code.
+     * @param name The name of the data object.
+     * @param intValue The new int value that should be assigned to the data object.
+     * @return
+     */
+    public static BasicResult SetIntValue(String token, LicenseKey license, String machineCode, String name, int intValue) {
+        return SetIntValue(token, new SetIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, name, intValue));
     }
 
     public static BasicResult SetIntValue(String token, SetIntValueToKeyModel model) {
