@@ -594,6 +594,18 @@ public class Data {
      * This method will assign a new string value to a Data Object.
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
+     * @param name The name of the data object.
+     * @param stringValue A string value (text) to store. Max 10000 characters.
+     * @return
+     */
+    public static BasicResult SetStringValue(String token, LicenseKey license, String name, String stringValue) {
+        return SetStringValue(token, new SetStringValueToKeyModel(license.ProductId, license.Key, name, stringValue));
+    }
+
+    /**
+     * This method will assign a new string value to a Data Object.
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
      * @param machineCode The machine code.
      * @param id The unique object id for the data object.
      * @param stringValue A string value (text) to store. Max 10000 characters.
@@ -602,6 +614,20 @@ public class Data {
     public static BasicResult SetStringValue(String token, LicenseKey license, String machineCode, long id, String stringValue) {
         return SetStringValue(token, new SetStringValueToMachineCodeModel(license.ProductId, license.Key, machineCode, id, stringValue));
     }
+
+    /**
+     * This method will assign a new string value to a Data Object.
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param machineCode The machine code.
+     * @param name The name of the data object.
+     * @param stringValue A string value (text) to store. Max 10000 characters.
+     * @return
+     */
+    public static BasicResult SetStringValue(String token, LicenseKey license, String machineCode, String name, String stringValue) {
+        return SetStringValue(token, new SetStringValueToMachineCodeModel(license.ProductId, license.Key, machineCode, name, stringValue));
+    }
+
 
     public static BasicResult SetStringValue(String token, SetStringValueToKeyModel model) {
 
@@ -625,7 +651,7 @@ public class Data {
      * This method will remove an existing Data Object.
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
-     * @param id A string value (text) to store. Max 10000 characters.
+     * @param id The unique object id for the data object.
      * @return
      */
     public static BasicResult RemoveDataObject(String token, LicenseKey license, long id) {
@@ -636,12 +662,35 @@ public class Data {
      * This method will remove an existing Data Object.
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
+     * @param name The name of the data object.
+     * @return
+     */
+    public static BasicResult RemoveDataObject(String token, LicenseKey license, String name) {
+        return RemoveDataObject(token, new RemoveDataObjectToKeyModel(license.ProductId, license.Key, name));
+    }
+
+    /**
+     * This method will remove an existing Data Object.
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
      * @param machineCode The machine code.
-     * @param id A string value (text) to store. Max 10000 characters.
+     * @param id The unique object id for the data object.
      * @return
      */
     public static BasicResult RemoveDataObject(String token, LicenseKey license, String machineCode, long id) {
         return RemoveDataObject(token, new RemoveDataObjectToMachineCodeModel(license.ProductId, license.Key, machineCode, id));
+    }
+
+    /**
+     * This method will remove an existing Data Object.
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param machineCode The machine code.
+     * @param name The name of the data object.
+     * @return
+     */
+    public static BasicResult RemoveDataObject(String token, LicenseKey license, String machineCode, String name) {
+        return RemoveDataObject(token, new RemoveDataObjectToMachineCodeModel(license.ProductId, license.Key, machineCode, name));
     }
 
     public static BasicResult RemoveDataObject(String token, RemoveDataObjectToKeyModel model) {

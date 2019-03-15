@@ -6,10 +6,21 @@ public class RemoveDataObjectToMachineCodeModel extends ProductKeyMachineCodeMod
      */
     public long Id;
 
+    public String Name;
+
     public RemoveDataObjectToMachineCodeModel(int productId, String key, String machineCode, long id) {
         Id = id;
         this.ProductId = productId;
         this.Key = key;
         this.MachineCode = machineCode;
+        this.Name = "";
+    }
+
+    public RemoveDataObjectToMachineCodeModel(int productId, String key, String machineCode, String name) {
+        Id = 0;
+        this.ProductId = productId;
+        this.Key = key;
+        this.MachineCode = machineCode;
+        this.Name = name;
     }
 }
