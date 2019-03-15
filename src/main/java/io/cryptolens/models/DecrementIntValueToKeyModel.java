@@ -45,5 +45,6 @@ public class DecrementIntValueToKeyModel extends ProductAndKeyModel {
         this.Key = key;
         this.EnableBound = enableBound;
         this.Bound = bound;
+        this.Name = name;
     }
 }
