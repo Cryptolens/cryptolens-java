@@ -203,6 +203,26 @@ public class Data {
      * by 1, please set Feature lock field to 1 also. Please see Remarks for more details (including access token set up).
      * @param token The access token with 'IncrementIntValue' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
+     * @param name The name of the data object.
+     * @param intValue 	The constant int (non-negative) value that should be added to the current
+     *                  IntValue of the data object. For example, if this value is set to 5 and the
+     *                  old IntValue is 1, then the new IntValue will be the old one plus 5, i.e. 6.
+     *                  Note, if you would set this value to -5 instead, the same result would be achieved.
+     * @return
+     */
+    public static BasicResult IncrementIntValue(String token, LicenseKey license, String name, int intValue) {
+        return IncrementIntValue(token, new IncrementIntValueToKeyModel(license.ProductId, license.Key, name, intValue, false, 0));
+    }
+
+
+    /**
+     * This method will increment the integer value in a Data Object by a certain constant (non-negative).
+     * You can always decrement it. Note, this method does not allow integer overflows, i.e. if you increment
+     * by a constant that would result in an overflow, an error will be thrown. Note also that you can use the Feature lock
+     * in the Access Token to specify the upper bound of the increment constant. So, if you only want to allow incrementing
+     * by 1, please set Feature lock field to 1 also. Please see Remarks for more details (including access token set up).
+     * @param token The access token with 'IncrementIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
      * @param machineCode The machine code.
      * @param id The unique object id for the data object.
      * @param intValue 	The constant int (non-negative) value that should be added to the current
@@ -213,6 +233,26 @@ public class Data {
      */
     public static BasicResult IncrementIntValue(String token, LicenseKey license, String machineCode, long id, int intValue) {
         return IncrementIntValue(token, new IncrementIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, id, intValue, false, 0));
+    }
+
+    /**
+     * This method will increment the integer value in a Data Object by a certain constant (non-negative).
+     * You can always decrement it. Note, this method does not allow integer overflows, i.e. if you increment
+     * by a constant that would result in an overflow, an error will be thrown. Note also that you can use the Feature lock
+     * in the Access Token to specify the upper bound of the increment constant. So, if you only want to allow incrementing
+     * by 1, please set Feature lock field to 1 also. Please see Remarks for more details (including access token set up).
+     * @param token The access token with 'IncrementIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param machineCode The machine code.
+     * @param name The name of the data object.
+     * @param intValue 	The constant int (non-negative) value that should be added to the current
+     *                  IntValue of the data object. For example, if this value is set to 5 and the
+     *                  old IntValue is 1, then the new IntValue will be the old one plus 5, i.e. 6.
+     *                  Note, if you would set this value to -5 instead, the same result would be achieved.
+     * @return
+     */
+    public static BasicResult IncrementIntValue(String token, LicenseKey license, String machineCode, String name, int intValue) {
+        return IncrementIntValue(token, new IncrementIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, name, intValue, false, 0));
     }
 
     /**
@@ -248,6 +288,31 @@ public class Data {
      * by 1, please set Feature lock field to 1 also. Please see Remarks for more details (including access token set up).
      * @param token The access token with 'IncrementIntValue' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
+     * @param name The name of the data object.
+     * @param intValue 	The constant int (non-negative) value that should be added to the current
+     *                  IntValue of the data object. For example, if this value is set to 5 and the
+     *                  old IntValue is 1, then the new IntValue will be the old one plus 5, i.e. 6.
+     *                  Note, if you would set this value to -5 instead, the same result would be achieved.
+     * @param enableBound 	If set to true, it will be possible to specify an upper bound. For example,
+     *                      if you set the Bound parameter (below) to 10, you will be able to increment
+     *                      the int value until you reach ten (inclusive). Once the upper bound is reached,
+     *                      an error will be thrown.
+     * @param bound 	This is the upper bound that will be enforced on the increment operation.
+     *                  It will only be enforced if EnableBound is set to true. Please read the description about enableBound.
+     * @return
+     */
+    public static BasicResult IncrementIntValue(String token, LicenseKey license, String name, int intValue, boolean enableBound, int bound) {
+        return IncrementIntValue(token, new IncrementIntValueToKeyModel(license.ProductId, license.Key, name, intValue, enableBound, bound));
+    }
+
+    /**
+     * This method will increment the integer value in a Data Object by a certain constant (non-negative).
+     * You can always decrement it. Note, this method does not allow integer overflows, i.e. if you increment
+     * by a constant that would result in an overflow, an error will be thrown. Note also that you can use the Feature lock
+     * in the Access Token to specify the upper bound of the increment constant. So, if you only want to allow incrementing
+     * by 1, please set Feature lock field to 1 also. Please see Remarks for more details (including access token set up).
+     * @param token The access token with 'IncrementIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
      * @param machineCode The machine code.
      * @param id The unique object id for the data object.
      * @param intValue 	The constant int (non-negative) value that should be added to the current
@@ -264,6 +329,32 @@ public class Data {
      */
     public static BasicResult IncrementIntValue(String token, LicenseKey license, String machineCode, long id, int intValue, boolean enableBound, int bound) {
         return IncrementIntValue(token, new IncrementIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, id, intValue, enableBound, bound));
+    }
+
+    /**
+     * This method will increment the integer value in a Data Object by a certain constant (non-negative).
+     * You can always decrement it. Note, this method does not allow integer overflows, i.e. if you increment
+     * by a constant that would result in an overflow, an error will be thrown. Note also that you can use the Feature lock
+     * in the Access Token to specify the upper bound of the increment constant. So, if you only want to allow incrementing
+     * by 1, please set Feature lock field to 1 also. Please see Remarks for more details (including access token set up).
+     * @param token The access token with 'IncrementIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param machineCode The machine code.
+     * @param name The name of the data object.
+     * @param intValue 	The constant int (non-negative) value that should be added to the current
+     *                  IntValue of the data object. For example, if this value is set to 5 and the
+     *                  old IntValue is 1, then the new IntValue will be the old one plus 5, i.e. 6.
+     *                  Note, if you would set this value to -5 instead, the same result would be achieved.
+     * @param enableBound 	If set to true, it will be possible to specify an upper bound. For example,
+     *                      if you set the Bound parameter (below) to 10, you will be able to increment
+     *                      the int value until you reach ten (inclusive). Once the upper bound is reached,
+     *                      an error will be thrown.
+     * @param bound 	This is the upper bound that will be enforced on the increment operation.
+     *                  It will only be enforced if EnableBound is set to true. Please read the description about enableBound.
+     * @return
+     */
+    public static BasicResult IncrementIntValue(String token, LicenseKey license, String machineCode, String name, int intValue, boolean enableBound, int bound) {
+        return IncrementIntValue(token, new IncrementIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, name, intValue, enableBound, bound));
     }
 
     public static BasicResult IncrementIntValue(String token, IncrementIntValueToKeyModel model) {
@@ -313,6 +404,26 @@ public class Data {
      * details (including access token setup).
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
+     * @param name The name of the data object.
+     * @param intValue 	The constant int value that should be subtracted to the current IntValue of the data object.
+     *                  For example, if this value is set to 5 and the old IntValue is 11, then the new IntValue
+     *                  will be the old one minus 5, i.e. 6. Note, if you would set this value to -5 instead, the
+     *                  same result would be achieved.
+     * @return
+     */
+    public static BasicResult DecrementIntValue(String token, LicenseKey license, String name, int intValue) {
+        return DecrementIntValue(token, new DecrementIntValueToKeyModel(license.ProductId, license.Key, name, intValue, false, 0));
+    }
+
+    /**
+     * This method will decrement the integer value in a Data Object by a certain constant (non-negative).
+     * You can always increment it. Note, this method does not allow integer overflows, i.e. if you decrement
+     * by a constant that would result in an overflow, an error will be thrown. Note also that you can use the
+     * Feature lock in the Access Token to specify the upper bound of the decrement constant. So, if you only
+     * want to allow decrementing by 1, please set Feature lock field to 1 also. Please see Remarks for more
+     * details (including access token setup).
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
      * @param machineCode The machine code.
      * @param id The unique object id for the data object.
      * @param intValue 	The constant int value that should be subtracted to the current IntValue of the data object.
@@ -323,6 +434,27 @@ public class Data {
      */
     public static BasicResult DecrementIntValue(String token, LicenseKey license, String machineCode, long id, int intValue) {
         return DecrementIntValue(token, new DecrementIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, id, intValue, false, 0));
+    }
+
+    /**
+     * This method will decrement the integer value in a Data Object by a certain constant (non-negative).
+     * You can always increment it. Note, this method does not allow integer overflows, i.e. if you decrement
+     * by a constant that would result in an overflow, an error will be thrown. Note also that you can use the
+     * Feature lock in the Access Token to specify the upper bound of the decrement constant. So, if you only
+     * want to allow decrementing by 1, please set Feature lock field to 1 also. Please see Remarks for more
+     * details (including access token setup).
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param machineCode The machine code.
+     * @param name The name of the data object.
+     * @param intValue 	The constant int value that should be subtracted to the current IntValue of the data object.
+     *                  For example, if this value is set to 5 and the old IntValue is 11, then the new IntValue
+     *                  will be the old one minus 5, i.e. 6. Note, if you would set this value to -5 instead, the
+     *                  same result would be achieved.
+     * @return
+     */
+    public static BasicResult DecrementIntValue(String token, LicenseKey license, String machineCode, String name, int intValue) {
+        return DecrementIntValue(token, new DecrementIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, name, intValue, false, 0));
     }
 
     /**
@@ -359,6 +491,31 @@ public class Data {
      * details (including access token setup).
      * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
+     * @param name The name of the data object.
+     * @param intValue 	The constant int value that should be subtracted to the current IntValue of the data object.
+     *                  For example, if this value is set to 5 and the old IntValue is 11, then the new IntValue
+     *                  will be the old one minus 5, i.e. 6. Note, if you would set this value to -5 instead, the
+     *                  same result would be achieved.
+     * @param enableBound If set to true, it will be possible to specify a lower bound. For example, if you set the Bound
+     *                    parameter (below) to 0, you will be able to decrement the int value until you reach zero (inclusive).
+     *                    Once the lower bound is reached, an error will be thrown.
+     * @param  bound This is the lower bound that will be enforced on the decrement operation. It will only be enforced if
+     *               EnableBound is set to true. Please read the description above.
+     * @return
+     */
+    public static BasicResult DecrementIntValue(String token, LicenseKey license, String name, int intValue, boolean enableBound, int bound) {
+        return DecrementIntValue(token, new DecrementIntValueToKeyModel(license.ProductId, license.Key, name, intValue, enableBound, bound));
+    }
+
+    /**
+     * This method will decrement the integer value in a Data Object by a certain constant (non-negative).
+     * You can always increment it. Note, this method does not allow integer overflows, i.e. if you decrement
+     * by a constant that would result in an overflow, an error will be thrown. Note also that you can use the
+     * Feature lock in the Access Token to specify the upper bound of the decrement constant. So, if you only
+     * want to allow decrementing by 1, please set Feature lock field to 1 also. Please see Remarks for more
+     * details (including access token setup).
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
      * @param machineCode The machine code.
      * @param id The unique object id for the data object.
      * @param intValue 	The constant int value that should be subtracted to the current IntValue of the data object.
@@ -374,6 +531,32 @@ public class Data {
      */
     public static BasicResult DecrementIntValue(String token, LicenseKey license, String machineCode, long id, int intValue, boolean enableBound, int bound) {
         return DecrementIntValue(token, new DecrementIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, id, intValue, enableBound, bound));
+    }
+
+    /**
+     * This method will decrement the integer value in a Data Object by a certain constant (non-negative).
+     * You can always increment it. Note, this method does not allow integer overflows, i.e. if you decrement
+     * by a constant that would result in an overflow, an error will be thrown. Note also that you can use the
+     * Feature lock in the Access Token to specify the upper bound of the decrement constant. So, if you only
+     * want to allow decrementing by 1, please set Feature lock field to 1 also. Please see Remarks for more
+     * details (including access token setup).
+     * @param token The access token with 'SetIntValue' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param machineCode The machine code.
+     * @param name The name of the data object.
+     * @param intValue 	The constant int value that should be subtracted to the current IntValue of the data object.
+     *                  For example, if this value is set to 5 and the old IntValue is 11, then the new IntValue
+     *                  will be the old one minus 5, i.e. 6. Note, if you would set this value to -5 instead, the
+     *                  same result would be achieved.
+     * @param enableBound If set to true, it will be possible to specify a lower bound. For example, if you set the Bound
+     *                    parameter (below) to 0, you will be able to decrement the int value until you reach zero (inclusive).
+     *                    Once the lower bound is reached, an error will be thrown.
+     * @param  bound This is the lower bound that will be enforced on the decrement operation. It will only be enforced if
+     *               EnableBound is set to true. Please read the description above.
+     * @return
+     */
+    public static BasicResult DecrementIntValue(String token, LicenseKey license, String machineCode, String name, int intValue, boolean enableBound, int bound) {
+        return DecrementIntValue(token, new DecrementIntValueToMachineCodeModel(license.ProductId, license.Key, machineCode, name, intValue, enableBound, bound));
     }
 
 
