@@ -35,6 +35,21 @@ public class Data {
     }
 
     /**
+     * Adds a new data object to a license key.
+     * @param token The access token with 'AddDataObject' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param name The name of the data object. Max 10 characters.
+     * @param intValue 	An int value (int32) to store.
+     * @param stringValue A string value (text) to store. Max 10000 characters.
+     * @param checkForDuplicates If set to true, this method will check that no other data object
+     *                           with the same name exists. Note: setting this to true may affect performance.
+     * @return
+     */
+    public static BasicResult AddDataObject(String token, LicenseKey license, String name, int intValue, String stringValue, boolean checkForDuplicates) {
+        return AddDataObject(token, new AddDataObjectToKeyModel(license.ProductId, license.Key, name, intValue, stringValue, checkForDuplicates));
+    }
+
+    /**
      * Adds a new data object to an existing activation (machine code).
      * @param token The access token with 'AddDataObject' permission and KeyLock set to '-1'.
      * @param license The license key object (it's used to get the product id and key string).
@@ -47,6 +62,23 @@ public class Data {
     public static BasicResult AddDataObject(String token, LicenseKey license, String machineCode, String name, int intValue, String stringValue) {
         return AddDataObject(token, new AddDataObjectToMachineCodeModel(license.ProductId, license.Key, machineCode, name, intValue, stringValue));
     }
+
+    /**
+     * Adds a new data object to an existing activation (machine code).
+     * @param token The access token with 'AddDataObject' permission and KeyLock set to '-1'.
+     * @param license The license key object (it's used to get the product id and key string).
+     * @param machineCode The machine code.
+     * @param name The name of the data object. Max 10 characters.
+     * @param intValue 	An int value (int32) to store.
+     * @param stringValue A string value (text) to store. Max 10000 characters.
+     * @param checkForDuplicates If set to true, this method will check that no other data object
+     *                           with the same name exists. Note: setting this to true may affect performance.
+     * @return
+     */
+    public static BasicResult AddDataObject(String token, LicenseKey license, String machineCode, String name, int intValue, String stringValue, boolean checkForDuplicates) {
+        return AddDataObject(token, new AddDataObjectToMachineCodeModel(license.ProductId, license.Key, machineCode, name, intValue, stringValue, checkForDuplicates));
+    }
+
 
 
     public static BasicResult AddDataObject(String token, AddDataObjectToKeyModel model) {
