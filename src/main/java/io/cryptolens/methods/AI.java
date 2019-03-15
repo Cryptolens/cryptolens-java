@@ -16,7 +16,7 @@ public class AI {
      * <p>Note: You can either use this method standalone (eg. by only providing a machine code/device identifier)
      * or together with Cryptolens Licensing module (which requires productId and optionally keyid to be set).
      * The more information that is provided, the better insights can be provided.</p>
-     * @param token The access token with 'AddDataObject' permission and KeyLock set to '-1'.
+     * @param token The access token with 'RegisterEvent' permission.
      * @param model The input parameters of the method.
      * @return
      */
