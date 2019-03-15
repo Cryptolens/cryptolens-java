@@ -13,6 +13,11 @@ public class AddDataObjectToKeyModel extends ProductAndKeyModel {
      * A string value (text) to store. Max 10000 characters.
      */
     public String StringValue;
+    /**
+     * If set to true, this method will check that no other data object with the same name exists.
+     * Note: setting this to true may affect performance.
+     */
+    public boolean CheckForDuplicates;
 
     public AddDataObjectToKeyModel(int productId, String key, String name, int intValue, String stringValue) {
         Name = name;
@@ -20,5 +25,14 @@ public class AddDataObjectToKeyModel extends ProductAndKeyModel {
         IntValue = intValue;
         this.ProductId = productId;
         this.Key = key;
+    }
+
+    public AddDataObjectToKeyModel(int productId, String key, String name, int intValue, String stringValue, boolean checkForDuplicates) {
+        Name = name;
+        StringValue = stringValue;
+        IntValue = intValue;
+        this.ProductId = productId;
+        this.Key = key;
+        this.CheckForDuplicates = checkForDuplicates;
     }
 }

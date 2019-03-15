@@ -7,6 +7,8 @@ public class SetStringValueToKeyModel extends ProductAndKeyModel {
      */
     public long Id;
 
+    public String Name;
+
     /**
      * A string value (text) to store. Max 10000 characters.
      */
@@ -17,5 +19,13 @@ public class SetStringValueToKeyModel extends ProductAndKeyModel {
         StringValue = stringValue;
         this.ProductId = productId;
         this.Key = key;
+        this.Name = "";
+    }
+    public SetStringValueToKeyModel(int productId, String key, String name, String stringValue) {
+        Id = 0;
+        StringValue = stringValue;
+        this.ProductId = productId;
+        this.Key = key;
+        this.Name = name;
     }
 }

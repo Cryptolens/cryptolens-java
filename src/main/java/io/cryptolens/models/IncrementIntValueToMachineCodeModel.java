@@ -6,6 +6,8 @@ public class IncrementIntValueToMachineCodeModel extends ProductKeyMachineCodeMo
      * 	The unique object id for the data object.
      */
     public long Id;
+
+    public String Name;
     /**
      * The constant int (non-negative) value that should be added to the current IntValue of the data object.
      * For example, if this value is set to 5 and the old IntValue is 1, then the new IntValue will be the
@@ -33,5 +35,16 @@ public class IncrementIntValueToMachineCodeModel extends ProductKeyMachineCodeMo
         this.EnableBound = enableBound;
         this.Bound = bound;
         this.MachineCode = machineCode;
+        this.Name = "";
+    }
+    public IncrementIntValueToMachineCodeModel(int productId, String key, String machineCode, String name, int intValue, boolean enableBound, int bound) {
+        this.IntValue = intValue;
+        this.ProductId = productId;
+        this.Key = key;
+        this.EnableBound = enableBound;
+        this.Bound = bound;
+        this.MachineCode = machineCode;
+        this.Name = name;
+        Id = 0;
     }
 }

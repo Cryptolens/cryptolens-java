@@ -5,6 +5,8 @@ public class IncrementIntValueToKeyModel extends ProductAndKeyModel {
      * 	The unique object id for the data object.
      */
     public long Id;
+
+    public String Name;
     /**
      * The constant int (non-negative) value that should be added to the current IntValue of the data object.
      * For example, if this value is set to 5 and the old IntValue is 1, then the new IntValue will be the
@@ -31,5 +33,16 @@ public class IncrementIntValueToKeyModel extends ProductAndKeyModel {
         this.Key = key;
         this.EnableBound = enableBound;
         this.Bound = bound;
+        this.Name = "";
+    }
+
+    public IncrementIntValueToKeyModel(int productId, String key, String name, int intValue, boolean enableBound, int bound) {
+        this.Name = name;
+        this.IntValue = intValue;
+        this.ProductId = productId;
+        this.Key = key;
+        this.EnableBound = enableBound;
+        this.Bound = bound;
+        Id = 0;
     }
 }

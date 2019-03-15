@@ -74,13 +74,19 @@ public class DataTest
 
         init();
 
-        BasicResult addResult = Data.AddDataObject(APIKey.get("data"), license, "test", 3, "test");
+        BasicResult addResult = Data.AddDataObject(APIKey.get("data"), license, "test2", 3, "test");
 
         if(!Helpers.IsSuccessful(addResult)) {
             fail("Could not add a new data object");
         }
 
-        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license, "");
+        BasicResult addResult2 = Data.AddDataObject(APIKey.get("data"), license, "test2", 3, "test", true);
+
+        if(Helpers.IsSuccessful(addResult2)) {
+            fail("Data object added even if it already exists.");
+        }
+
+        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license, "test2");
 
         if(!Helpers.IsSuccessful(listResult)) {
             fail("Could not list data objects");
@@ -92,14 +98,14 @@ public class DataTest
 
         int currentVal = dObj.IntValue;
         BasicResult incrementResult = Data.IncrementIntValue(APIKey.get("data"), license, dObj.Id, 1);
-        listResult = Data.ListDataObjects(APIKey.get("data"), license, "");
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, "test2");
 
         if(!Helpers.IsSuccessful(incrementResult) || listResult.DataObjects.get(0).IntValue != currentVal + 1) {
             fail("Could not increment the data object.");
         }
 
         BasicResult decrementResult = Data.DecrementIntValue(APIKey.get("data"), license, dObj.Id, 1);
-        listResult = Data.ListDataObjects(APIKey.get("data"), license, "");
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, "test2");
 
         if(!Helpers.IsSuccessful(decrementResult) || listResult.DataObjects.get(0).IntValue != currentVal) {
             fail("Could not increment the data object.");
@@ -112,17 +118,79 @@ public class DataTest
 
     }
 
+    public void testAdd3() throws Exception{
+
+        init();
+
+        BasicResult addResult = Data.AddDataObject(APIKey.get("data"), license, "test3", 3, "test", true);
+
+        /*if(!Helpers.IsSuccessful(addResult)) {
+            fail("Could not add a new data object");
+        }*/
+
+        BasicResult addResult2 = Data.AddDataObject(APIKey.get("data"), license, "test3", 3, "test", true);
+
+        if(Helpers.IsSuccessful(addResult2)) {
+            fail("Data object added even if it already exists.");
+        }
+
+        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license, "test3");
+
+        if(!Helpers.IsSuccessful(listResult)) {
+            fail("Could not list data objects");
+        }
+
+        int count = listResult.DataObjects.size();
+
+        DataObject dObj = listResult.DataObjects.get(0);
+
+        int currentVal = dObj.IntValue;
+        BasicResult incrementResult = Data.IncrementIntValue(APIKey.get("data"), license, "test3", 1);
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, "test3");
+
+        if(!Helpers.IsSuccessful(incrementResult) || listResult.DataObjects.get(0).IntValue != currentVal + 1) {
+            fail("Could not increment the data object.");
+        }
+
+        BasicResult decrementResult = Data.DecrementIntValue(APIKey.get("data"), license, "test3", 1);
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, "test3");
+
+        if(!Helpers.IsSuccessful(decrementResult) || listResult.DataObjects.get(0).IntValue != currentVal) {
+            fail("Could not increment the data object.");
+        }
+
+        BasicResult setInt = Data.SetIntValue(APIKey.get("data"), license, "test3", 99);
+        BasicResult setString = Data.SetStringValue(APIKey.get("data"), license, "test3", "test123");
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, "test3");
+
+        assertEquals(listResult.DataObjects.get(0).StringValue,"test123");
+        assertEquals(listResult.DataObjects.get(0).IntValue, 99);
+
+
+        BasicResult removeResult = Data.RemoveDataObject(APIKey.get("data"), license, "test3");
+        if(!Helpers.IsSuccessful(removeResult)) {
+            fail("Could not increment the data object.");
+        }
+
+    }
+
     public void testAdd2() throws Exception{
 
         init();
 
-        BasicResult addResult = Data.AddDataObject(APIKey.get("data"), license, machineCode, "test", 3, "test");
+        BasicResult addResult = Data.AddDataObject(APIKey.get("data"), license, machineCode, "test2", 3, "test");
 
         if(!Helpers.IsSuccessful(addResult)) {
             fail("Could not add a new data object");
         }
 
-        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "");
+        BasicResult addResult2 = Data.AddDataObject(APIKey.get("data"), license, machineCode, "test2", 3, "test", true);
+
+        if(Helpers.IsSuccessful(addResult2)) {
+            fail("Data object added even if it already exists.");
+        }
+
+        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test2");
 
         if(!Helpers.IsSuccessful(listResult)) {
             fail("Could not list data objects");
@@ -134,14 +202,14 @@ public class DataTest
 
         int currentVal = dObj.IntValue;
         BasicResult incrementResult = Data.IncrementIntValue(APIKey.get("data"), license, machineCode, dObj.Id, 1);
-        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "");
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test2");
 
         if(!Helpers.IsSuccessful(incrementResult) || listResult.DataObjects.get(0).IntValue != currentVal + 1) {
             fail("Could not increment the data object.");
         }
 
         BasicResult decrementResult = Data.DecrementIntValue(APIKey.get("data"), license, machineCode, dObj.Id, 1);
-        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "");
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test2");
 
         if(!Helpers.IsSuccessful(decrementResult) || listResult.DataObjects.get(0).IntValue != currentVal) {
             fail("Could not increment the data object.");
@@ -152,7 +220,65 @@ public class DataTest
             fail("Could not increment the data object.");
         }
 
-        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "");
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test2");
+
+        if(!Helpers.IsSuccessful(removeResult) || listResult.DataObjects.size() != count - 1) {
+            fail("Could not increment the data object.");
+        }
+
+    }
+
+    public void testAdd4() throws Exception{
+
+        init();
+
+        BasicResult addResult = Data.AddDataObject(APIKey.get("data"), license, machineCode, "test3", 3, "test", true);
+
+        BasicResult addResult2 = Data.AddDataObject(APIKey.get("data"), license, machineCode, "test3", 3, "test", true);
+
+        if(Helpers.IsSuccessful(addResult2)) {
+            fail("Data object added even if it already exists.");
+        }
+
+        ListOfDataObjectsResult listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test3");
+
+        if(!Helpers.IsSuccessful(listResult)) {
+            fail("Could not list data objects");
+        }
+
+        int count = listResult.DataObjects.size();
+
+        DataObject dObj = listResult.DataObjects.get(0);
+
+        int currentVal = dObj.IntValue;
+        BasicResult incrementResult = Data.IncrementIntValue(APIKey.get("data"), license, machineCode, "test3", 1);
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test3");
+
+        if(!Helpers.IsSuccessful(incrementResult) || listResult.DataObjects.get(0).IntValue != currentVal + 1) {
+            fail("Could not increment the data object.");
+        }
+
+        BasicResult decrementResult = Data.DecrementIntValue(APIKey.get("data"), license, machineCode, "test3", 1);
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test3");
+
+        if(!Helpers.IsSuccessful(decrementResult) || listResult.DataObjects.get(0).IntValue != currentVal) {
+            fail("Could not increment the data object.");
+        }
+
+        BasicResult setInt = Data.SetIntValue(APIKey.get("data"), license, machineCode, "test3", 99);
+        BasicResult stringRes = Data.SetStringValue(APIKey.get("data"), license, machineCode, "test3", "newstring");
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test3");
+
+        assertEquals(listResult.DataObjects.get(0).StringValue,"newstring");
+        assertEquals(listResult.DataObjects.get(0).IntValue,99);
+
+
+        BasicResult removeResult = Data.RemoveDataObject(APIKey.get("data"), license, machineCode, "test3");
+        if(!Helpers.IsSuccessful(removeResult)) {
+            fail("Could not increment the data object.");
+        }
+
+        listResult = Data.ListDataObjects(APIKey.get("data"), license, machineCode, "test3");
 
         if(!Helpers.IsSuccessful(removeResult) || listResult.DataObjects.size() != count - 1) {
             fail("Could not increment the data object.");

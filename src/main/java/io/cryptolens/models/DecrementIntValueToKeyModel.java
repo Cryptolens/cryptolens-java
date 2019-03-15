@@ -7,6 +7,8 @@ public class DecrementIntValueToKeyModel extends ProductAndKeyModel {
      */
     public long Id;
 
+    public String Name;
+
     /**
      * 	The constant int value that should be subtracted to the current IntValue of the data object. For example,
      * 	if this value is set to 5 and the old IntValue is 11, then the new IntValue will be the old one minus 5, i.e. 6.
@@ -34,5 +36,15 @@ public class DecrementIntValueToKeyModel extends ProductAndKeyModel {
         this.Key = key;
         this.EnableBound = enableBound;
         this.Bound = bound;
+        this.Name = "";
+    }
+    public DecrementIntValueToKeyModel(int productId, String key, String name, int intValue, boolean enableBound, int bound) {
+        Id = 0;
+        IntValue = intValue;
+        this.ProductId = productId;
+        this.Key = key;
+        this.EnableBound = enableBound;
+        this.Bound = bound;
+        this.Name = name;
     }
 }
