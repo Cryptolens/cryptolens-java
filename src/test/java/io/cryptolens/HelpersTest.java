@@ -1,10 +1,13 @@
 package io.cryptolens;
 
 import io.cryptolens.methods.Helpers;
+import io.cryptolens.models.DataObject;
 import io.cryptolens.models.LicenseKey;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import java.util.ArrayList;
 
 /**
  * Unit test for simple App.
@@ -36,14 +39,21 @@ public class HelpersTest
     public void testApp()
     {
         LicenseKey license = new LicenseKey();
-        license.Notes = "[\"test\", [\"module\",[\"A\"]]]";
+
+        license.DataObjects = new ArrayList<>();
+
+        DataObject dobj = new DataObject();
+
+        dobj.Name = "cryptolens_features";
+        dobj.StringValue = "[\"test\", [\"module\",[\"A\"]]]";
+        license.DataObjects.add(dobj);
 
         assertTrue(Helpers.HasFeature(license, "test"));
         assertTrue(Helpers.HasFeature(license, "module"));
         assertTrue(Helpers.HasFeature(license, "module.A"));
         assertFalse(Helpers.HasFeature(license, "module.B"));
 
-        license.Notes = "[\"f1\", [\"f2\",[[\"voice\",[\"all\"]]]]]";
+        license.DataObjects.get(0).StringValue = "[\"f1\", [\"f2\",[[\"voice\",[\"all\"]]]]]";
 
         assertTrue(Helpers.HasFeature(license, "f2.voice.all"));
 

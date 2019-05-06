@@ -205,9 +205,8 @@ public class Helpers {
     }
 
     /**
-     * <p>Uses the notes field to determine if a certain feature exists (instead of the 8 feature flags).</p>
-     * <p><strong>Formatting: </strong> The notes field needs to be formatted as a JSON array of strings or of JSON arrays
-     * where the first element specifies the feature name and the second element is a list of features.</p>
+     * <p>Uses a special data object associated with the license key to determine if a certain feature exists (instead of the 8 feature flags).</p>
+     * <p><strong>Formatting: </strong> The name of the data object should be 'cryptolens_features' and it should be structured as a JSON array.</p>
      * <p>For example,</p> <pre>["f1", "f2"]</pre><p>means f1 and f2 are true. You can also have feature bundling, eg. </p> <pre>["f1", ["f2",["voice","image"]]]</pre>
      * <p>which means that f1 and f2 are true, as well as f2.limited and f2.image. You can set any depth, eg. you can have</p>
      * <pre>["f1", ["f2",[["voice",["all"]], "image"]]]</pre> <p>means f2.voice.all is true as well as f2.voice and f2.
@@ -218,8 +217,24 @@ public class Helpers {
      */
     public static boolean HasFeature(LicenseKey licenseKey, String featureName) {
 
+        if(licenseKey.DataObjects == null) {
+            return false;
+        }
+
+        String features = null;
+        for(int i = 0; i < licenseKey.DataObjects.size(); i++) {
+            if(licenseKey.DataObjects.get(i).Name.equals("cryptolens_features")) {
+                features = licenseKey.DataObjects.get(i).StringValue;
+            }
+        }
+
+        if(features == null) {
+            // data object not found.
+            return false;
+        }
+
         JsonParser parser = new JsonParser();
-        JsonArray array = parser.parse(licenseKey.Notes).getAsJsonArray();
+        JsonArray array = parser.parse(features).getAsJsonArray();
         String[] featurePath = featureName.split("\\.");
 
         boolean found = false;
