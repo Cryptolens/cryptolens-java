@@ -3,13 +3,13 @@ package io.cryptolens;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.cryptolens.internal.BasicResult;
-import io.cryptolens.methods.Data;
 import io.cryptolens.methods.Helpers;
 import io.cryptolens.methods.ProductMethods;
-import io.cryptolens.models.DataObject;
+import io.cryptolens.methods.Subscription;
 import io.cryptolens.models.GetProductsResult;
 import io.cryptolens.models.LicenseKey;
-import io.cryptolens.models.ListOfDataObjectsResult;
+import io.cryptolens.models.RecordUsageModel;
+import io.cryptolens.models.RegisterEventModel;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 /**
  * Unit test for simple App.
  */
-public class ProductTest
+public class SubscriptionTest
     extends TestCase
 {
 
@@ -36,7 +36,7 @@ public class ProductTest
      *
      * @param testName name of the test case
      */
-    public ProductTest(String testName )
+    public SubscriptionTest(String testName )
     {
         super( testName );
     }
@@ -46,7 +46,7 @@ public class ProductTest
      */
     public static Test suite()
     {
-        return new TestSuite( ProductTest.class );
+        return new TestSuite( SubscriptionTest.class );
     }
 
     public void init() throws Exception{
@@ -65,14 +65,15 @@ public class ProductTest
 
     }
 
-    public void testGetProducts() throws Exception{
+    public void testRecordUsage() throws Exception{
 
         init();
 
-        GetProductsResult getProducts = ProductMethods.GetProducts(APIKey.get("productmethods"));
+        BasicResult res = Subscription.RecordUsage(APIKey.get("subscriptionmethods"),
+                new RecordUsageModel(3349, "CMXKC-GUQRW-EJUGS-RRPUR", 1));
 
-        if(!Helpers.IsSuccessful(getProducts)) {
-            fail("Could not obtain a list of data objects.");
+        if(!Helpers.IsSuccessful(res)) {
+            fail("Could not register usage");
         }
 
     }
