@@ -1,10 +1,15 @@
 package io.cryptolens.internal;
 
-import com.google.gson.Gson;
+import com.google.gson.*;
 import io.cryptolens.legacy.HttpsURLConnectionRequestHandler;
 import io.cryptolens.legacy.RequestHandler;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Type;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class HelperMethods {
@@ -36,7 +41,14 @@ public class HelperMethods {
 
             String response = requestHandler.makePostRequest("https://app.cryptolens.io/api/" + method, params);
 
-            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
+                @Override
+                public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+                    /*Instant instant = Instant.ofEpochMilli(json.getAsJsonPrimitive().getAsLong());
+                    return LocalDateTime.ofInstant(instant, ZoneId.systemDefault()*/
+                    return LocalDateTime.parse(json.getAsString(), DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+                }
+            }).create();
 
             T res = gson.fromJson(response, clazz);
             res.RawResponse = response;
