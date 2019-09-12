@@ -3,6 +3,8 @@ package io.cryptolens.internal;
 import com.google.gson.*;
 import io.cryptolens.legacy.HttpsURLConnectionRequestHandler;
 import io.cryptolens.legacy.RequestHandler;
+import io.cryptolens.models.APIError;
+import io.cryptolens.models.ErrorType;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Type;
@@ -15,6 +17,10 @@ import java.util.*;
 public class HelperMethods {
 
     public static <T extends BasicResult> T SendRequestToWebAPI(String method, Object model, Map<String,String> extraParams, Class<T> clazz) {
+        return SendRequestToWebAPI(method, model, extraParams, clazz, null);
+    }
+
+    public static <T extends BasicResult> T SendRequestToWebAPI(String method, Object model, Map<String,String> extraParams, Class<T> clazz, APIError error) {
 
         Map<String,String> params = new HashMap<>();
         List<Field> allFields = new ArrayList<>();
@@ -28,7 +34,10 @@ public class HelperMethods {
                     params.put(field.getName(), value.toString());
                 }
             } catch (Exception ex) {
-                System.err.println(ex.getStackTrace());
+                if(error != null) {
+                    error.errorType = ErrorType.LibraryError;
+                    error.message = ex.getMessage();
+                }
             }
         }
 
@@ -55,7 +64,10 @@ public class HelperMethods {
             return res;
 
         } catch (Exception ex) {
-            System.err.println(ex.getStackTrace());
+            if(error != null) {
+                error.errorType = ErrorType.LibraryError;
+                error.message = ex.toString();
+            }
         }
 
         return  null;

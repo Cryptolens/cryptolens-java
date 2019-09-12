@@ -48,7 +48,7 @@ public class KeyTest
 
         if (license == null || !Helpers.IsOnRightMachine(license)) {
             System.out.println("The license does not work.");
-            System.out.println("Error: " + error.Message);
+            System.out.println("Error: " + error.message);
         } else {
             System.out.println("The license is valid!");
             System.out.println("It will expire: " + license.Expires);
