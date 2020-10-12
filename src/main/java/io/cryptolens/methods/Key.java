@@ -69,9 +69,11 @@ public class Key {
         Map<String,String> extraParams = new HashMap<>();
 
         // force sign and the new protocol (only in activate)
+        // modelVersion=3 docs: https://app.cryptolens.io/docs/api/v3/Activate?modelVersion=3
         extraParams.put("Sign", "true");
         extraParams.put("SignMethod", "1");
         extraParams.put("token", token);
+        //extraParams.put("ModelVersion", "3");
 
         ActivateResult result = HelperMethods.SendRequestToWebAPI("key/activate", model, extraParams, ActivateResult.class, error);
 

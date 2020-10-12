@@ -319,7 +319,7 @@ public class Helpers {
 
         String vendor = operatingSystem.getManufacturer();
         String processorSerialNumber = computerSystem.getSerialNumber();
-        String processorIdentifier = centralProcessor.getIdentifier();
+        String processorIdentifier = centralProcessor.getProcessorIdentifier().getIdentifier();
         int processors = centralProcessor.getLogicalProcessorCount();
 
         return vendor +
