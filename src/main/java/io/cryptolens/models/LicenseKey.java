@@ -37,6 +37,7 @@ public class LicenseKey {
     public int MaxNoOfMachines;
     //  private int AllowedMachines;
     public List<DataObject> DataObjects;
+    public Reseller Reseller;
     public long SignDate;
 
     /**

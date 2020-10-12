@@ -63,6 +63,7 @@ public class KeyTest
         }
 
         //Key.Deactivate("", new DeactivateModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL", Helpers.GetMachineCode()));
+        System.out.println(Helpers.GetMachineCode());
 
         assertTrue( true );
 

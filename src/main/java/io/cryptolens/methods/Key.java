@@ -73,7 +73,7 @@ public class Key {
         extraParams.put("Sign", "true");
         extraParams.put("SignMethod", "1");
         extraParams.put("token", token);
-        //extraParams.put("ModelVersion", "3");
+        extraParams.put("ModelVersion", "3");
 
         ActivateResult result = HelperMethods.SendRequestToWebAPI("key/activate", model, extraParams, ActivateResult.class, error);
 
