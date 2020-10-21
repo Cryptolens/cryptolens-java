@@ -45,7 +45,7 @@ public class Key {
     }
 
     /**
-     * Calls the Activate method (https://app.cryptolens.io/docs/api/v3/Activate).
+     * Calls the Activate method (https://app.cryptolens.io/docs/api/v3/Activate?modelVersion=3).
      * <p>This method allows you to retrieve the error message from the Web API.</p>
      * <p>
      *     To retrieve the error message, you need to initialize an APIError object and pass it in into the
@@ -76,6 +76,36 @@ public class Key {
         extraParams.put("ModelVersion", "3");
 
         ActivateResult result = HelperMethods.SendRequestToWebAPI("key/activate", model, extraParams, ActivateResult.class, error);
+
+        if(result == null || result.result == 1) {
+            if(result != null) {
+                if (error != null) {
+                    error.message = result.message;
+                    error.errorType = ErrorType.WebAPIError;
+                }
+            } else {
+                if (error != null) {
+                    error.errorType = ErrorType.WebAPIError;
+                }
+            }
+            return null;
+        }
+
+        return LicenseKey.LoadFromString(RSAPubKey, result.RawResponse);
+    }
+
+    public static LicenseKey GetKey (String token, String RSAPubKey, GetKeyModel model, APIError error) {
+
+        Map<String,String> extraParams = new HashMap<>();
+
+        // force sign and the new protocol (only in activate)
+        // modelVersion=3 docs: https://app.cryptolens.io/docs/api/v3/Activate?modelVersion=3
+        extraParams.put("Sign", "true");
+        extraParams.put("SignMethod", "1");
+        extraParams.put("token", token);
+        extraParams.put("ModelVersion", "3");
+
+        ActivateResult result = HelperMethods.SendRequestToWebAPI("key/getkey", model, extraParams, ActivateResult.class, error);
 
         if(result == null || result.result == 1) {
             if(result != null) {
