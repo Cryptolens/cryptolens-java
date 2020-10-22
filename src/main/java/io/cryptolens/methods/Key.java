@@ -94,6 +94,26 @@ public class Key {
         return LicenseKey.LoadFromString(RSAPubKey, result.RawResponse);
     }
 
+    /**
+     * Calls the GetKey method (https://app.cryptolens.io/docs/api/v3/GetKey?modelVersion=3).
+     * <p>This method allows you to retrieve the error message from the Web API.</p>
+     * <p>
+     *     To retrieve the error message, you need to initialize an APIError object and pass it in into the
+     *     "error" parameter. For example,
+     * </p>
+     * <code>
+     *     APIError error = new APIError();<br>
+     *     LicenseKey license = Key.GetKey(auth, RSAPubKey, new GetKeyModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL"), error);<br>
+     *     System.out.println(error.message);
+     * </code>
+     * @param token The access token with 'GetKey' permission.
+     * @param RSAPubKey Your RSA Public Key, which can be found at https://app.cryptolens.io/docs/api/v3/QuickStart.
+     * @param model Method parameters.
+     * @param error The error object whose Message field will be populated if an error has occurred. Please initialize
+     *              this parameter, i.e. define <code>APIError error = new APIError();</code> and then pass
+     *              <code>error</code> into this parameter.
+     * @return A LicenseKey object if success and null otherwise.
+     */
     public static LicenseKey GetKey (String token, String RSAPubKey, GetKeyModel model, APIError error) {
 
         Map<String,String> extraParams = new HashMap<>();
