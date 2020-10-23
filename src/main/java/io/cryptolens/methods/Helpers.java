@@ -119,10 +119,11 @@ public class Helpers {
         }
 
         if(isFloatingLicense) {
-            if(license.ActivatedMachines.size() == 1 &&
-                    (license.ActivatedMachines.get(0).Mid.substring(9).equals(current_mid) ||
-                            allowOverdraft && license.ActivatedMachines.get(0).Mid.substring(19).equals(current_mid))) {
-                return true;
+            for (ActivatedMachine machine : license.ActivatedMachines) {
+                if((machine.Mid.length() >= 9 && machine.Mid.substring(9).equals(current_mid) ||
+                        allowOverdraft && machine.Mid.length() >= 19 && machine.Mid.substring(19).equals(current_mid))) {
+                    return true;
+                }
             }
         } else {
 
