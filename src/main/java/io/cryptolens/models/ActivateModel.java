@@ -51,6 +51,12 @@ public class ActivateModel {
      * Allows you to specify a friendy name for the activated device, for example the employee's email.
      * Friendly name does not impact the number of active machine codes / seats, but it offers an easy way
      * of linking a machine/seat with a user. For added security, you can HMAC hash this value.
+     * <br/>
+     * The computer name can, as an example, be used as the friendly name:
+     * <code>
+     *     String friendlyName = InetAddress.getLocalHost().getHostName();
+     * </code>
+     *
      */
     public String FriendlyName;
 
