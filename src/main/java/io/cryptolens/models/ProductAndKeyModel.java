@@ -1,6 +1,6 @@
 package io.cryptolens.models;
 
-public abstract class ProductAndKeyModel {
+public abstract class ProductAndKeyModel extends RequestModel{
     /**
      * The product id.
      */

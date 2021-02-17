@@ -2,6 +2,8 @@ package io.cryptolens.methods;
 
 import io.cryptolens.internal.*;
 import io.cryptolens.models.GetProductsResult;
+import io.cryptolens.models.RequestModel;
+
 import java.util.*;
 
 /**
@@ -19,6 +21,6 @@ public class ProductMethods {
         Map<String, String> extraParams = new HashMap<>();
         extraParams.put("token", token);
 
-        return HelperMethods.SendRequestToWebAPI("product/GetProducts", new Object(), extraParams, GetProductsResult.class);
+        return HelperMethods.SendRequestToWebAPI("product/GetProducts", new RequestModel(), extraParams, GetProductsResult.class);
     }
 }

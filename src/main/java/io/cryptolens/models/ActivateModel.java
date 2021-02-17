@@ -3,7 +3,7 @@ package io.cryptolens.models;
 /**
  * The parameters that are used when calling the Key.Activate method.
  */
-public class ActivateModel {
+public class ActivateModel extends RequestModel {
 
     /**
      * The product id, which can be found on the product page.
