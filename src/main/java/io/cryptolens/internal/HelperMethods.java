@@ -27,12 +27,19 @@ public class HelperMethods {
         List<Field> allFields = new ArrayList<>();
         getAllFields(allFields, model.getClass());
 
+        String licenseServerUrl = "https://app.cryptolens.io";
+
         for(Field field : allFields) {
             field.setAccessible(true);
             try {
                 Object value = field.get(model);
                 if(value != null) {
-                    params.put(field.getName(), value.toString());
+
+                    if(field.getName() == "LicenseServerUrl") {
+                        licenseServerUrl = field.toString();
+                    } else {
+                        params.put(field.getName(), value.toString());
+                    }
                 }
             } catch (Exception ex) {
                 if(error != null) {
@@ -49,7 +56,7 @@ public class HelperMethods {
 
         try {
 
-            String response = requestHandler.makePostRequest("https://app.cryptolens.io/api/" + method, params);
+            String response = requestHandler.makePostRequest(licenseServerUrl + "/api/" + method, params);
 
             Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
                 @Override
