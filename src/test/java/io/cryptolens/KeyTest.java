@@ -63,6 +63,22 @@ public class KeyTest
 
         LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL", Helpers.GetMachineCode()), error);
 
+
+        if(license != null) {
+            // activation/validation did not work.
+        }
+
+        if(license.MaxNoOfMachines != 0 && !Helpers.IsOnRightMachine(license,true)) {
+            // since MaxNoOfMachines > 0, devices are being tracked, so we
+            // check if this device was activated.
+            // the "true" parameter refers to "isFloatingLicense".
+        }
+
+        // if we are here, everything went well.
+
+
+
+
         if (license == null || !Helpers.IsOnRightMachine(license)) {
             System.out.println("The license does not work.");
             System.out.println("Error: " + error.message);
