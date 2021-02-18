@@ -36,7 +36,7 @@ public class HelperMethods {
                 if(value != null) {
 
                     if(field.getName() == "LicenseServerUrl") {
-                        licenseServerUrl = field.toString();
+                        licenseServerUrl = value.toString();
                     } else {
                         params.put(field.getName(), value.toString());
                     }

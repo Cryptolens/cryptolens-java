@@ -123,3 +123,40 @@ public static void main(String args[]) {
     }
 }
 ```
+
+### Calling through the license server
+If you would like to re-route the requests through our [license-server](https://github.com/cryptolens/license-server) that is installed on the client site, you can specify its url using `LicenseServerUrl`
+parameter. All API models expose this parameter. 
+
+For example, let's suppose that your client runs the license server on `http://10.1.1.6:8080` and you want to call `Key.GetKey()`. In this case, we first define all parameters for the request and then
+modify the license server url:
+
+```java
+GetKeyModel model = new GetKeyModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL");
+model.LicenseServerUrl = "http://10.1.1.6:8080";
+```
+
+We do this because there is currently no overload method that accepts `LicenseServerUrl` parameter.
+
+The entire code is shown below:
+
+```java
+String RSAPubKey = "<RSAKeyValue><Modulus>sGbvxwdlDbqFXOMlVUnAF5ew0t0WpPW7rFpI5jHQOFkht/326dvh7t74RYeMpjy357NljouhpTLA3a6idnn4j6c3jmPWBkjZndGsPL4Bqm+fwE48nKpGPjkj4q/yzT4tHXBTyvaBjA8bVoCTn+LiC4XEaLZRThGzIn5KQXKCigg6tQRy0GXE13XYFVz/x1mjFbT9/7dS8p85n8BuwlY5JvuBIQkKhuCNFfrUxBWyu87CFnXWjIupCD2VO/GbxaCvzrRjLZjAngLCMtZbYBALksqGPgTUN7ZM24XbPWyLtKPaXF2i4XRR9u6eTj5BfnLbKAU5PIVfjIS+vNYYogteQ==<Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
+
+String auth = APIKey.get("getkeyactivate");
+
+APIError error = new APIError();
+
+GetKeyModel model = new GetKeyModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL");
+model.LicenseServerUrl = "http://10.1.1.6:8080";
+
+LicenseKey license = Key.GetKey(auth, RSAPubKey, model , error);
+
+if (license == null) {
+    System.out.println("The license does not work.");
+    System.out.println("Error: " + error.message);
+} else {
+    System.out.println("The license is valid!");
+    System.out.println("It will expire: " + license.Expires);
+}
+```
