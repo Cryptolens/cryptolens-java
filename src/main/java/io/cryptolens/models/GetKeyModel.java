@@ -4,7 +4,7 @@ package io.cryptolens.models;
  * The parameters that are used when calling the Key.GetKey method.
  */
 
-public class GetKeyModel {
+public class GetKeyModel extends RequestModel {
     /**
      * The product id, which can be found on the product page.
      */

@@ -1,6 +1,6 @@
 package io.cryptolens.models;
 
-public class RecordUsageModel {
+public class RecordUsageModel extends RequestModel {
     public int ProductId;
     public String Key;
     public int Amount;

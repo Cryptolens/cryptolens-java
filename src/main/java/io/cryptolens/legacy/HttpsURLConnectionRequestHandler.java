@@ -9,7 +9,9 @@ import javax.net.ssl.*;
 public class HttpsURLConnectionRequestHandler implements RequestHandler {
   public String makePostRequest(String url, Map<String,String> params) throws Exception {
     URL url_ = new URL(url);
-    HttpsURLConnection connection = (HttpsURLConnection)url_.openConnection();
+
+    // HttpsURLConnection extends HttpURLConnection
+    HttpURLConnection connection = (HttpURLConnection)url_.openConnection();
     connection.setRequestMethod("POST");
 
     connection.setDoOutput(true);

@@ -1,6 +1,6 @@
 package io.cryptolens.models;
 
-public class DeactivateModel {
+public class DeactivateModel extends RequestModel {
 
     public int ProductId;
     public String Key;

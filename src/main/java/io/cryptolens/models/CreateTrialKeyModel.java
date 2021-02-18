@@ -1,6 +1,6 @@
 package io.cryptolens.models;
 
-public class CreateTrialKeyModel {
+public class CreateTrialKeyModel extends RequestModel {
     public int ProductId;
     public String MachineCode;
 
