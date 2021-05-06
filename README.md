@@ -64,6 +64,8 @@ If you want to make sure that the license file is not too old, you can specify t
 LicenseKey newLicense = LicenseKey.LoadFromString(RSAPubKey, licenseString, 30);
 ```
 
+> **Note:** `LicenseKey.LoadFromString` does not check the *ProductId*. In case you have multiple products, we recommend that you check that the *ProductId* corresponds to the product where the user tries to use the license file.
+
 ### Floating licenses
 [Floating licenses](https://help.cryptolens.io/licensing-models/floating) can be enabled by passing a floatingTimeInterval to the `ActivateModel`. Optionally, you can also allow customers to exceed the bound by specifying the maxOverdraft.
 
