@@ -101,3 +101,6 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 apikeys.json
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/workspace.xml

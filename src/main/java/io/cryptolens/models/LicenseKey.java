@@ -85,7 +85,8 @@ public class LicenseKey {
             licenseKey = Shared.defaultBase64Decoder(result.licenseKey);
             signature = Shared.defaultBase64Decoder(result.signature);
         } catch (Exception ex) {
-            System.err.println(ex.getStackTrace()); return null;
+            ex.printStackTrace();
+            return null;
         }
 
         try {
@@ -102,7 +103,7 @@ public class LicenseKey {
                 System.err.println("Signature check failed");
                 return null;
             }
-        } catch(Exception ex) {System.err.println(ex.getStackTrace()); return null;}
+        } catch(Exception ex) {ex.printStackTrace(); return null;}
 
         String s = new String(licenseKey, StandardCharsets.UTF_8);
         LicenseKey license = new Gson().fromJson(s, LicenseKey.class);
