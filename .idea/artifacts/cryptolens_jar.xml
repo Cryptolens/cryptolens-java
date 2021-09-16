@@ -2,13 +2,13 @@
   <artifact type="jar" build-on-make="true" name="cryptolens:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/cryptolens</output-path>
     <root id="archive" name="cryptolens.jar">
-      <element id="module-output" name="cryptolens-java" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna/5.6.0/jna-5.6.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.15/commons-codec-1.15.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/java/dev/jna/jna-platform/5.6.0/jna-platform-5.6.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/oshi/oshi-core/5.3.1/oshi-core-5.3.1.jar" path-in-jar="/" />
+      <element id="module-output" name="cryptolens" />
     </root>
   </artifact>
 </component>
