@@ -21,11 +21,8 @@ public class Message {
      * on the time and the channel.
      * @param token The access token with 'GetMessages' permission.
      * @param model Method parameters.
-     * @param error The error object whose Message field will be populated if an error has occurred. Please initialize
-     *              this parameter, i.e. define <code>APIError error = new APIError();</code> and then pass
-     *              <code>error</code> into this parameter.
      */
-    public GetMessagesResult GetMessages (String token, GetMessagesModel model) {
+    public static GetMessagesResult GetMessages (String token, GetMessagesModel model) {
         return GetMessages(token, model, null);
     }
 
@@ -40,7 +37,7 @@ public class Message {
      *              this parameter, i.e. define <code>APIError error = new APIError();</code> and then pass
      *              <code>error</code> into this parameter.
      */
-    public GetMessagesResult GetMessages (String token, GetMessagesModel model, APIError error) {
+    public static GetMessagesResult GetMessages (String token, GetMessagesModel model, APIError error) {
 
 
         Map<String,String> extraParams = new HashMap<>();
