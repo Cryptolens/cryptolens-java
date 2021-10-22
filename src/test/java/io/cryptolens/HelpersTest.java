@@ -1,12 +1,16 @@
 package io.cryptolens;
 
 import io.cryptolens.methods.Helpers;
+import io.cryptolens.models.ActivatedMachine;
 import io.cryptolens.models.DataObject;
 import io.cryptolens.models.LicenseKey;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -63,6 +67,26 @@ public class HelpersTest
         assertFalse(Helpers.HasFeature(license, "aa.voice.all.test"));
 
         String[] featurePath = "moduleA.video".split(".");
+
+    }
+
+    public void testMachineCode() throws IOException {
+
+        Helpers.GetMachineCode();
+
+        String mc = Helpers.GetMachineCode(2);
+
+        LicenseKey license = new LicenseKey();
+        license.ActivatedMachines = new ArrayList<>();
+        ActivatedMachine machine = new ActivatedMachine();
+        machine.Mid = mc;
+        license.ActivatedMachines.add(machine);
+
+        Helpers.IsOnRightMachine(license, 2);
+
+        assertTrue(Helpers.IsOnRightMachine(license, 2));
+
+
 
     }
 }

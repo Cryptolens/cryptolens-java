@@ -106,7 +106,7 @@ public class Helpers {
     public static boolean IsOnRightMachine(LicenseKey license) {
         return IsOnRightMachine(license, false);
     }
-    
+
     /**
      * Check if the device is registered with the license key.
      * @param license The license key object.
@@ -116,6 +116,32 @@ public class Helpers {
      */
     public static boolean IsOnRightMachine(LicenseKey license, boolean isFloatingLicense) {
         return IsOnRightMachine(license, isFloatingLicense, false);
+    }
+
+    /**
+     * Check if the device is registered with the license key.
+     * @param license The license key object.
+     * @param v If set to 2, this method will use the UUID of the device instead of depending
+     *          on slf4j. Note, it currently only supports Windows. You can read more
+     *          here: https://help.cryptolens.io/faq/index#java.
+     * @return True if the license is registered with this machine and False otherwise.
+     */
+    public static boolean IsOnRightMachine(LicenseKey license, int v) {
+        return IsOnRightMachine(license, v, false);
+    }
+
+    /**
+     * Check if the device is registered with the license key.
+     * @param license The license key object.
+     * @param isFloatingLicense If this is a floating license, this parameter has to be set to true.
+     *                          You can enable floating licenses by setting @see ActivateModel.FloatingTimeInterval.
+     * @param v If set to 2, this method will use the UUID of the device instead of depending
+     *          on slf4j. Note, it currently only supports Windows. You can read more
+     *          here: https://help.cryptolens.io/faq/index#java.
+     * @return True if the license is registered with this machine and False otherwise.
+     */
+    public static boolean IsOnRightMachine(LicenseKey license, int v, boolean isFloatingLicense) {
+        return IsOnRightMachine(license, v, isFloatingLicense, false);
     }
 
     /**
@@ -133,6 +159,26 @@ public class Helpers {
         String current_mid = Helpers.GetMachineCode();
         return IsOnRightMachine(license, current_mid, isFloatingLicense, allowOverdraft);
     }
+
+    /**
+     * Check if the device is registered with the license key.
+     * @param license The license key object.
+     * @param v If set to 2, this method will use the UUID of the device instead of depending
+     *          on slf4j. Note, it currently only supports Windows. You can read more
+     *          here: https://help.cryptolens.io/faq/index#java.
+     * @param isFloatingLicense If this is a floating license, this parameter has to be set to true.
+     *                          You can enable floating licenses by setting @see ActivateModel.FloatingTimeInterval.
+     * @param allowOverdraft If floating licensing is enabled with overdraft, this parameter should be set to true.
+     *                       You can enable overdraft by setting ActivateModel.MaxOverdraft" to a value greater than 0.
+     * @return True if the license is registered with this machine and False otherwise.
+     */
+    public static boolean IsOnRightMachine(LicenseKey license, int v, boolean isFloatingLicense, boolean allowOverdraft) {
+
+        String current_mid =  Helpers.GetMachineCode(v);
+
+        return IsOnRightMachine(license, current_mid, isFloatingLicense, allowOverdraft);
+    }
+
 
 
     /**
