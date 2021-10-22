@@ -7,7 +7,9 @@ This library is continuously being improved. Please contact us at support@crypto
 Javadoc can be found here: https://help.cryptolens.io/api/java/
 
 ## Adding the library
-There are two pre-compiled jar files: `cryptolens.jar` and `cryptolens-android.jar`. If your application is cross platform or if you would like to have as few dependencies as possible (e.g., without `slf4j`), we recommend to use `cryptolens-android.jar` instead. It contains all the methods except for `GetMachineCode` and `IsOnRightMachine`.
+There are two pre-compiled jar files: `cryptolens.jar` and `cryptolens-android.jar`. If your application is cross platform or if you would like to have as few dependencies as possible (e.g., without `slf4j`), we recommend to use `cryptolens-android.jar` instead. 
+
+If you choose to use `cryptolens-android.jar`, `GetMachineCode` and `IsOnRightMachine` need to be called with the version parameter set to 2. For example, `Helpers.GetMachineCode(2)` or `Helpers.IsOnRightMachine(license, 2)`.
 
 ## Example
 
