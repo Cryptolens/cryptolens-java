@@ -12,6 +12,9 @@ import oshi.hardware.ComputerSystem;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.software.os.OperatingSystem;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
@@ -29,10 +32,70 @@ public class Helpers {
      * Returns a unique identifier of the device. Note, root access may be required.
      * Note, this method is not the same as the one used in our .NET client.
      * Also, this method only works on desktop computers.
+     * @apiNote If you do not want to depend on slf4j or if you use the cryptolens-android
+     * binary, please call GetMachineCode with v=2.
      */
     public static String GetMachineCode() {
 
         return SHA256(getRawDeviceID());
+    }
+
+    /**
+     * This method uses a special OS command to find the UUID of the device. In comparison
+     * to the default method, GetMachineCode, this method does not depend on slf4j to compute
+     * the device fingerprint, assuming that v=2. If v=2, the result of this method should be
+     * the same as in the .NET SDK and Python on Windows.
+     * @param v If set to 2, this method will use the UUID of the device instead of depending
+     *          on slf4j. Note, it currently only supports Windows. You can read more
+     *          here: https://help.cryptolens.io/faq/index#java.
+     */
+    public static String GetMachineCode(int v) {
+
+        if (v == 1) {
+            return GetMachineCode();
+        }
+
+        String operSys = System.getProperty("os.name").toLowerCase();
+
+        if (operSys.contains("win")) {
+
+            try {
+                Process process = null;
+
+                process = Runtime.getRuntime().exec("cmd.exe /C wmic csproduct get uuid\n");
+
+                BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String line = null;
+
+                StringBuilder sb = new StringBuilder();
+                while (true) {
+                    line = in.readLine();
+                    if (line == null) {
+                        break;
+                    }
+                    sb.append(line);
+                }
+
+                String res = sb.toString();
+                return SHA256(res.substring(res.indexOf("UUID:") + 6).toString().trim());
+
+            } catch(Exception e){
+
+                return null;
+            }
+
+
+        }else if (operSys.contains("nix") || operSys.contains("nux")
+                || operSys.contains("aix")) {
+            return "This OS is not supported yet.";
+        } else if (operSys.contains("mac")) {
+            return "This OS is not supported yet.";
+
+        }
+        else{
+            return "This OS is not supported yet.";
+        }
+
     }
 
     /**
@@ -43,7 +106,7 @@ public class Helpers {
     public static boolean IsOnRightMachine(LicenseKey license) {
         return IsOnRightMachine(license, false);
     }
-
+    
     /**
      * Check if the device is registered with the license key.
      * @param license The license key object.
@@ -273,7 +336,7 @@ public class Helpers {
     /**
      * Return the sha256 checksum of a string.
      */
-    private static String SHA256(String rawData) {
+    public static String SHA256(String rawData) {
 
         StringBuffer hexString = new StringBuffer();
 
