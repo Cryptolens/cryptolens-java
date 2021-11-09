@@ -26,7 +26,7 @@ public class HelperMethods {
      * before calling any of the API methods. Once an API method is called, it will no longer be possible
      * to re-enable SSL verification by setting this variable to false.
      */
-    public static boolean SSLEnabled = true;
+    public static boolean SSLVerifyEnabled = true;
 
     public static <T extends BasicResult> T SendRequestToWebAPI(String method, RequestModel model, Map<String,String> extraParams, Class<T> clazz) {
         return SendRequestToWebAPI(method, model, extraParams, clazz, null);
@@ -66,7 +66,7 @@ public class HelperMethods {
         RequestHandler requestHandler = new HttpsURLConnectionRequestHandler();
 
         try {
-            if(!HelperMethods.SSLEnabled) {
+            if(!HelperMethods.SSLVerifyEnabled) {
                 HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
                     public boolean verify(String hostname, SSLSession session) {
                         return true;
