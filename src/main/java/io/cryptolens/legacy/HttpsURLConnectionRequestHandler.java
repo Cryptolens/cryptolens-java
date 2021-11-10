@@ -1,7 +1,13 @@
 package io.cryptolens.legacy;
 
+import io.cryptolens.internal.HelperMethods;
+import sun.net.util.URLUtil;
+
 import java.io.*;
 import java.net.*;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.*;
 
 import javax.net.ssl.*;
@@ -12,6 +18,33 @@ public class HttpsURLConnectionRequestHandler implements RequestHandler {
 
     // HttpsURLConnection extends HttpURLConnection
     HttpURLConnection connection = (HttpURLConnection)url_.openConnection();
+
+    if(!HelperMethods.SSLVerifyEnabled && "https".equals(url_.getProtocol())){
+
+      SSLContext context = SSLContext.getInstance("TLS");
+      context.init(null, new X509TrustManager[]{new X509TrustManager() {
+        public void checkClientTrusted(X509Certificate[] chain,
+                                       String authType) throws CertificateException {
+        }
+
+        public void checkServerTrusted(X509Certificate[] chain,
+                                       String authType) throws CertificateException {
+        }
+
+        public X509Certificate[] getAcceptedIssuers() {
+          return new X509Certificate[0];
+        }
+      }}, new SecureRandom());
+
+      ((HttpsURLConnection)connection).setHostnameVerifier(new HostnameVerifier() {
+        public boolean verify(String hostname, SSLSession session) {
+          return true;
+        }
+      });
+
+      ((HttpsURLConnection)connection).setSSLSocketFactory(context.getSocketFactory());
+    }
+
     connection.setRequestMethod("POST");
 
     connection.setDoOutput(true);
