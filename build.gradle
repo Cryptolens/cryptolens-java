@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
 }
 
 group 'io.cryptolens'
@@ -14,7 +14,4 @@ sourceSets {
             srcDirs = ['src']
         }
     }
-}
-dependencies {
-    compile 'junit:junit:4.12'
 }

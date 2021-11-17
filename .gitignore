@@ -104,3 +104,6 @@ apikeys.json
 .idea/compiler.xml
 .idea/jarRepositories.xml
 .idea/workspace.xml
+*.properties
+*.lock
+*.bin
