@@ -28,9 +28,9 @@ public class Main {
         String RSAPubKey = "<RSAKeyValue><Modulus>sGbvxwdlDbqFXOMlVUnAF5ew0t0WpPW7rFpI5jHQOFkht/326dvh7t74RYeMpjy357NljouhpTLA3a6idnn4j6c3jmPWBkjZndGsPL4Bqm+fwE48nKpGPjkj4q/yzT4tHXBTyvaBjA8bVoCTnu+LiC4XEaLZRThGzIn5KQXKCigg6tQRy0GXE13XYFVz/x1mjFbT9/7dS8p85n8BuwlY5JvuBIQkKhuCNFfrUxBWyu87CFnXWjIupCD2VO/GbxaCvzrRjLZjAngLCMtZbYBALksqGPgTUN7ZM24XbPWyLtKPaXF2i4XRR9u6eTj5BfnLbKAU5PIVfjIS+vNYYogteQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
         String auth = "WyIyNjA5IiwiaWE5b0VFT3Q2eDlNR2FvbHBHK2VOYUZ4bzNjT3h5UkNrMCtiYnhPRSJd";
 
-        LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL", Helpers.GetMachineCode()));
+        LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL", Helpers.GetMachineCode(2)));
 
-        if (license == null || !Helpers.IsOnRightMachine(license)) {
+        if (license == null || !Helpers.IsOnRightMachine(license, 2)) {
             System.out.println("The license does not work.");
         } else {
             System.out.println("The license is valid!");
@@ -84,8 +84,8 @@ public static void main(String args[]) {
     String RSAPubKey = "<RSAKeyValue><Modulus>sGbvxwdlDbqFXOMlVUnAF5ew0t0WpPW7rFpI5jHQOFkht/326dvh7t74RYeMpjy357NljouhpTLA3a6idnn4j6c3jmPWBkjZndGsPL4Bqm+fwE48nKpGPjkj4q/yzT4tHXBTyvaBjA8bVoCTnu+LiC4XEaLZRThGzIn5KQXKCigg6tQRy0GXE13XYFVz/x1mjFbT9/7dS8p85n8BuwlY5JvuBIQkKhuCNFfrUxBWyu87CFnXWjIupCD2VO/GbxaCvzrRjLZjAngLCMtZbYBALksqGPgTUN7ZM24XbPWyLtKPaXF2i4XRR9u6eTj5BfnLbKAU5PIVfjIS+vNYYogteQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
     String auth = "WyIyNjA5IiwiaWE5b0VFT3Q2eDlNR2FvbHBHK2VOYUZ4bzNjT3h5UkNrMCtiYnhPRSJd";
 
-    LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(), 300, 1));
-    if (license == null || !Helpers.IsOnRightMachine(license, true, true)) {
+    LicenseKey license = Key.Activate(auth, RSAPubKey, new ActivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(2), 300, 1));
+    if (license == null || !Helpers.IsOnRightMachine(license, 2, true, true)) {
         System.out.println("The license does not work.");
     } else {
         System.out.println("The license is valid!");
@@ -104,7 +104,7 @@ import io.cryptolens.models.*;
 public static void main(String args[]) {
     String auth = "";
 
-    boolean result = Key.Deactivate(auth, new DeactivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode()));
+    boolean result = Key.Deactivate(auth, new DeactivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(2)));
     if (result == true) {
         System.out.println("Deactivation successful.");
     } else {
@@ -122,7 +122,7 @@ import io.cryptolens.models.*;
 public static void main(String args[]) {
     String auth = "";
 
-    boolean result = Key.Deactivate(auth, new DeactivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(), true));
+    boolean result = Key.Deactivate(auth, new DeactivateModel(3349, "MTMPW-VZERP-JZVNZ-SCPZM", Helpers.GetMachineCode(2), true));
     if (result == true) {
         System.out.println("Deactivation successful.");
     } else {
