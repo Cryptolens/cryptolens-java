@@ -62,7 +62,7 @@ public class Helpers {
             try {
                 Process process = null;
 
-                process = Runtime.getRuntime().exec("cmd.exe /C wmic csproduct get uuid\n");
+                process = Runtime.getRuntime().exec("cmd /c powershell.exe -Command \"(Get-CimInstance -Class Win32_ComputerSystemProduct).UUID\"\n");
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
                 String line = null;
@@ -77,7 +77,7 @@ public class Helpers {
                 }
 
                 String res = sb.toString();
-                return SHA256(res.substring(res.indexOf("UUID:") + 6).toString().trim());
+                return SHA256(res.toString().trim());
 
             } catch(Exception e){
 
