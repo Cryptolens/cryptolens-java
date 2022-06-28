@@ -45,6 +45,10 @@ public class Helpers {
      * to the default method, GetMachineCode, this method does not depend on slf4j to compute
      * the device fingerprint, assuming that v=2. If v=2, the result of this method should be
      * the same as in the .NET SDK and Python on Windows.
+     * <p>
+     *     <strong>Note</strong>: If it is not possible to retrieve the UUID, this method will return null.
+     *     Please keep this in mind and check for the null case.
+     * </p>
      * @param v If set to 2, this method will use the UUID of the device instead of depending
      *          on slf4j. Note, it currently only supports Windows. You can read more
      *          here: https://help.cryptolens.io/faq/index#java.
@@ -77,7 +81,13 @@ public class Helpers {
                 }
 
                 String res = sb.toString();
-                return SHA256(res.toString().trim());
+                String seed = res.toString().trim();
+
+                if(seed == "") {
+                    return null;
+                }
+
+                return SHA256(seed);
 
             } catch(Exception e){
 
