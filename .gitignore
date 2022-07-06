@@ -113,3 +113,4 @@ apikeys.json
 .idea/vcs.xml
 .idea/.name
 .idea/artifacts/cryptolens_jar.xml
+.idea/cryptolens.iml
