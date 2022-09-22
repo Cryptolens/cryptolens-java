@@ -348,7 +348,7 @@ public class Helpers {
             }
         }
 
-        if(features == null) {
+        if(features == null || features.trim() == "") {
             // data object not found.
             return false;
         }
