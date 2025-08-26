@@ -671,7 +671,10 @@ public class Helpers {
     }
 
     private static String sha256(String input) {
-        try {
+
+        return SHA256(input);
+
+       /* try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] digest = md.digest(input.getBytes(StandardCharsets.UTF_8));
             StringBuilder hex = new StringBuilder(digest.length * 2);
@@ -682,7 +685,7 @@ public class Helpers {
             return hex.toString();
         } catch (Exception e) {
             return null;
-        }
+        }*/
     }
 
 }

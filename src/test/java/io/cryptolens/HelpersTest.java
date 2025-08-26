@@ -86,7 +86,7 @@ public class HelpersTest
 
         assertTrue(Helpers.IsOnRightMachine(license, 2));
 
-        String a = Helpers.getMachineCodev3();
+        String a = Helpers.GetMachineCode(3);
         System.out.println(a);
 
 
