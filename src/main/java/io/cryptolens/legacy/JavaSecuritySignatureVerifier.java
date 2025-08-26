@@ -7,7 +7,6 @@ import java.net.*;
 
 
 import com.google.gson.*;
-import org.apache.commons.codec.binary.BaseNCodec;
 
 import java.math.BigInteger;
 import java.security.*;
