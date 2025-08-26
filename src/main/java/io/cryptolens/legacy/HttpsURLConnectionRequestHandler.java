@@ -1,7 +1,6 @@
 package io.cryptolens.legacy;
 
 import io.cryptolens.internal.HelperMethods;
-import sun.net.util.URLUtil;
 
 import java.io.*;
 import java.net.*;

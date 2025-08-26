@@ -16,7 +16,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -57,6 +63,10 @@ public class Helpers {
 
         if (v == 1) {
             return GetMachineCode();
+        }
+
+        if(v== 3) {
+            return getMachineCode_v3();
         }
 
         String operSys = System.getProperty("os.name").toLowerCase();
@@ -106,6 +116,43 @@ public class Helpers {
             return "This OS is not supported yet.";
         }
 
+    }
+
+    private static String getMachineCode_v3() {
+        final String operSys = System.getProperty("os.name").toLowerCase(Locale.ENGLISH);
+
+        try {
+            String seed = null;
+
+            if (operSys.contains("win")) {
+                seed = getWindowsUUID();
+
+            } else if (operSys.contains("mac")) {
+                seed = getMacHardwareUUID();
+
+            } else if (operSys.contains("nix") || operSys.contains("nux")
+                    || operSys.contains("aix") || operSys.contains("linux")) {
+                seed = getLinuxMachineSeed();
+
+            } else {
+                return "This OS is not supported yet.";
+            }
+
+            if (seed == null) {
+                return null;
+            }
+
+            seed = seed.trim();
+            if (seed.isEmpty()) {
+                return null;
+            }
+
+            return sha256(seed);
+
+        } catch (Exception e) {
+            // Swallow to preserve current behavior; consider logging in real apps
+            return null;
+        }
     }
 
     /**
@@ -446,6 +493,196 @@ public class Helpers {
                 processorSerialNumber +
                 processorIdentifier +
                 processors;
+    }
+
+
+    /* =========================
+      Windows
+      ========================= */
+    private static String getWindowsUUID() throws IOException, InterruptedException {
+        // Primary: PowerShell CIM
+        String out = run(new ProcessBuilder(
+                "powershell.exe", "-NoProfile", "-NonInteractive",
+                "-Command", "(Get-CimInstance -Class Win32_ComputerSystemProduct).UUID"));
+        out = firstNonEmptyLine(out);
+        if (isLikelyUUID(out)) {
+            return out;
+        }
+
+        // Fallback: WMIC (deprecated on newer Windows but still present on many)
+        out = run(new ProcessBuilder("wmic", "csproduct", "get", "UUID"));
+        // WMIC outputs a header line "UUID" and then the value—pick the first line that looks like a UUID
+        for (String line : out.split("\\R")) {
+            line = line.trim();
+            if (isLikelyUUID(line)) return line;
+        }
+        return null;
+    }
+
+    /* =========================
+       macOS
+       ========================= */
+    private static String getMacHardwareUUID() throws IOException, InterruptedException {
+        // Matches: "Hardware UUID: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
+        String cmd = "system_profiler SPHardwareDataType | awk '/UUID/ { print $3; }'";
+        String out = runShell(cmd);
+        out = firstNonEmptyLine(out);
+        if (isLikelyUUID(out)) {
+            return out;
+        }
+
+        // Optional fallback using ioreg, if needed
+        String alt = runShell("ioreg -rd1 -c IOPlatformExpertDevice | awk '/IOPlatformUUID/ {print $4}' | tr -d '\"'");
+        alt = firstNonEmptyLine(alt);
+        return isLikelyUUID(alt) ? alt : null;
+    }
+
+    /* =========================
+       Linux
+       ========================= */
+    private static String getLinuxMachineSeed() throws IOException, InterruptedException {
+        // 1) Raspberry Pi detection via /proc/device-tree/model (present on Pi; often missing in VMs/containers)
+        String model = readFileIfExists("/proc/device-tree/model");
+        if (model == null) {
+            // Some environments need this alt path or may deny access to device-tree; not fatal.
+            model = readFileIfExists("/sys/firmware/devicetree/base/model");
+        }
+        if (model != null && model.toLowerCase(Locale.ENGLISH).contains("raspberry")) {
+            // Extract "Serial" from /proc/cpuinfo
+            String cpuinfo = readFileIfExists("/proc/cpuinfo");
+            if (cpuinfo != null) {
+                for (String line : cpuinfo.split("\\R")) {
+                    String t = line.trim();
+                    if (t.toLowerCase(Locale.ENGLISH).startsWith("serial")) {
+                        String[] parts = t.split(":", 2);
+                        if (parts.length == 2) {
+                            String serial = parts[1].trim();
+                            if (!serial.isEmpty()) return serial;
+                        }
+                    }
+                }
+            }
+            // If Pi but serial not found, continue to the generic path
+        }
+
+        // 2) Generic Linux: try DMI product UUID (no sudo required on many distros)
+        String dmi = readFileIfExists("/sys/class/dmi/id/product_uuid");
+        if (dmi != null) {
+            dmi = firstNonEmptyLine(dmi);
+            if (isLikelyUUID(dmi)) return dmi;
+        }
+
+        // 3) dmidecode (requires permissions; often needs sudo — will work in privileged envs)
+        String dmiDecode = runMaybe(null, new ProcessBuilder("dmidecode", "-s", "system-uuid"));
+        dmiDecode = firstNonEmptyLine(dmiDecode);
+        if (isLikelyUUID(dmiDecode)) return dmiDecode;
+
+        // 4) Your specified fallback when we cannot determine hardware:
+        // Try UUID of /boot, then /boot/efi, then /
+        String fsUuid = firstNonEmptyLine(runShell("findmnt --output=UUID --noheadings --target=/boot"));
+        if (fsUuid == null || fsUuid.isEmpty()) {
+            fsUuid = firstNonEmptyLine(runShell("findmnt --output=UUID --noheadings --target=/boot/efi"));
+        }
+        if (fsUuid == null || fsUuid.isEmpty()) {
+            fsUuid = firstNonEmptyLine(runShell("findmnt --output=UUID --noheadings --target=/"));
+        }
+        if (fsUuid != null && !fsUuid.isEmpty()) {
+            return fsUuid;
+        }
+
+        // 5) Last-resort for containerized / exotic hosts: OS installation id (not hardware!)
+        String machineId = readFileIfExists("/etc/machine-id");
+        if (machineId == null) {
+            machineId = readFileIfExists("/var/lib/dbus/machine-id");
+        }
+        machineId = firstNonEmptyLine(machineId);
+        if (machineId != null && !machineId.isEmpty()) {
+            return machineId;
+        }
+
+        return null;
+    }
+
+    /* =========================
+       Helpers
+       ========================= */
+
+    private static String runShell(String command) throws IOException, InterruptedException {
+        // Use /bin/sh for portability across macOS and Linux
+        return run(new ProcessBuilder("/bin/sh", "-c", command));
+    }
+
+    private static String run(ProcessBuilder pb) throws IOException, InterruptedException {
+        pb.redirectErrorStream(true);
+        Process p = pb.start();
+        StringBuilder sb = new StringBuilder();
+        try (BufferedReader in = new BufferedReader(
+                new InputStreamReader(p.getInputStream(), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = in.readLine()) != null) {
+                if (sb.length() > 0) sb.append('\n');
+                sb.append(line);
+            }
+        }
+        // Wait after draining streams to avoid deadlocks.
+        p.waitFor();
+        return sb.toString().trim();
+    }
+
+    private static String runMaybe(String defaultIfError, ProcessBuilder pb) {
+        try {
+            return run(pb);
+        } catch (Exception e) {
+            return defaultIfError;
+        }
+    }
+
+    private static String readFileIfExists(String path) {
+        try {
+            Path p = Paths.get(path);
+            if (!Files.exists(p)) return null;
+            // Some files (like device-tree nodes) may contain NULs; read as bytes then clean
+            byte[] bytes = Files.readAllBytes(p);
+            String s = new String(bytes, StandardCharsets.UTF_8).replace("\u0000", "");
+            return s.trim();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private static String firstNonEmptyLine(String text) {
+        if (text == null) return null;
+        for (String line : text.split("\\R")) {
+            line = line.trim();
+            if (!line.isEmpty()) return line;
+        }
+        return null;
+    }
+
+    private static boolean isLikelyUUID(String s) {
+        if (s == null) return false;
+        String t = s.trim();
+        // Accept canonical UUIDs and common uppercase variants
+        Pattern p = Pattern.compile("^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$");
+        Matcher m = p.matcher(t);
+        if (m.matches()) return true;
+        // Some firmware returns UUIDs without dashes; tolerate that too
+        return t.matches("^[a-fA-F0-9]{32}$");
+    }
+
+    private static String sha256(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] digest = md.digest(input.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hex = new StringBuilder(digest.length * 2);
+            for (byte b : digest) {
+                hex.append(Character.forDigit((b >>> 4) & 0xF, 16));
+                hex.append(Character.forDigit(b & 0xF, 16));
+            }
+            return hex.toString();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }

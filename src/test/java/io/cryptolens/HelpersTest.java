@@ -72,7 +72,7 @@ public class HelpersTest
 
     public void testMachineCode() throws IOException {
 
-        Helpers.GetMachineCode();
+        //Helpers.GetMachineCode();
 
         String mc = Helpers.GetMachineCode(2);
 
@@ -86,6 +86,8 @@ public class HelpersTest
 
         assertTrue(Helpers.IsOnRightMachine(license, 2));
 
+        String a = Helpers.getMachineCodev3();
+        System.out.println(a);
 
 
     }
