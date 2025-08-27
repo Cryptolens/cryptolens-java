@@ -38,7 +38,7 @@ public class Helpers {
      * Returns a unique identifier of the device. Note, root access may be required.
      * Note, this method is not the same as the one used in our .NET client.
      * Also, this method only works on desktop computers.
-     * @apiNote If you do not want to depend on slf4j or if you use the cryptolens-android
+     * API note: If you do not want to depend on slf4j or if you use the cryptolens-android
      * binary, please call GetMachineCode with v=2.
      */
     public static String GetMachineCode() {

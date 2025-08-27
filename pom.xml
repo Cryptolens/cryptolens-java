@@ -13,10 +13,37 @@
     <description>A client API to access Cryptolens Licensing API.</description>
     <url>https://github.com/cryptolens/cryptolens-java</url>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/Cryptolens/cryptolens-java</url>
+        <connection>scm:git:https://github.com/Cryptolens/cryptolens-java.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Cryptolens/cryptolens-java.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>cryptolens</id>
+            <name>Cryptolens AB</name>
+            <email>support@cryptolens.io</email>
+            <url>https://cryptolens.io</url>
+            <organization>Cryptolens AB</organization>
+            <organizationUrl>https://cryptolens.io</organizationUrl>
+        </developer>
+    </developers>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gpg.keyname>6D0FB5F8A25A36F35F9AE87AEA8D18F3E1D8A9CF</gpg.keyname>
     </properties>
 
     <dependencies>
@@ -43,4 +70,59 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- sources jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution><goals><goal>jar</goal></goals></execution>
+                </executions>
+            </plugin>
+
+            <!-- javadoc jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution><goals><goal>jar</goal></goals></execution>
+                </executions>
+            </plugin>
+
+            <!-- sign all artifacts -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <id>sign</id>
+                        <phase>verify</phase>
+                        <goals><goal>sign</goal></goals>
+                        <configuration>
+                            <keyname>${gpg.keyname}</keyname>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- publish via Central Portal -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.8.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <autoPublish>true</autoPublish>     <!-- optional: publish automatically -->
+                    <waitUntil>published</waitUntil>    <!-- optional: block until published -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

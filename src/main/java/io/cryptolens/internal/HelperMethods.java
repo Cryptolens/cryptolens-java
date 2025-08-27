@@ -38,7 +38,7 @@ public class HelperMethods {
         List<Field> allFields = new ArrayList<>();
         getAllFields(allFields, model.getClass());
 
-        String licenseServerUrl = "https://app.cryptolens.io";
+        String licenseServerUrl = "https://api.cryptolens.io";
 
         for(Field field : allFields) {
             field.setAccessible(true);
