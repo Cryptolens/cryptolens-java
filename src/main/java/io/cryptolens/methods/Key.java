@@ -265,7 +265,7 @@ public class Key {
      * This method will extend a license by a certain amount of days. If the key algorithm in the product is SKGL,
      * the key string will be changed if necessary. Otherwise, if SKM15 is used, the key will stay the same.
      * More about the way this method works in Remarks.
-     * @param token The access token with 'CreateTrialKey' permission.
+     * @param token The access token with 'ExtendLicense' permission.
      * @param model Method parameters.
      * @param error The error object whose Message field will be populated if an error has occurred. Please initialize
      *              this parameter, i.e. define <code>APIError error = new APIError();</code> and then pass
