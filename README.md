@@ -7,9 +7,10 @@ This library is continuously being improved. Please contact us at support@crypto
 Javadoc can be found here: https://help.cryptolens.io/api/java/
 
 ## Adding the library
-There are two pre-compiled jar files: `cryptolens.jar` and `cryptolens-android.jar`. If your application is cross platform or if you would like to have as few dependencies as possible (e.g., without `slf4j`), we recommend to use `cryptolens-android.jar` instead. 
 
-If you choose to use `cryptolens-android.jar`, `GetMachineCode` and `IsOnRightMachine` need to be called with the version parameter set to 2. For example, `Helpers.GetMachineCode(2)` or `Helpers.IsOnRightMachine(license, 2)`. If your application will run on an Android device, we recommend to use a different way to obtain the machine code, which is described [here](https://help.cryptolens.io/getting-started/ios-android).
+This library can be installed using Maven Central, for more information, please refer to [this page](https://central.sonatype.com/artifact/io.cryptolens/cryptolens/). If you do not want to use Maven, you can use the jar file attached to the latest [release](https://github.com/Cryptolens/cryptolens-java/releases).
+
+If you plan to run the library on other platforms, it is possible to use the library without the `oshi-core`. If you choose to skip the `oshi-core` dependency, `GetMachineCode` and `IsOnRightMachine` need to be called with the version parameter set to 3. For example, `Helpers.GetMachineCode(3)` or `Helpers.IsOnRightMachine(license, 3)`. If your application will run on an Android device, we recommend to use a different way to obtain the machine code, which is described [here](https://help.cryptolens.io/getting-started/ios-android).
 
 ## Example
 
