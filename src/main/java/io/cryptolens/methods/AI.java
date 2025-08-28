@@ -10,9 +10,9 @@ import java.util.Map;
 public class AI {
 
     /**
-     * <p>This method will register an event that has occured in either the client app
+     * <p>This method will register an event that has occurred in either the client app
      * (eg. start of a certain feature or interaction within a feature) or in a third
-     * party provider (eg. a payment has occured, etc).</p>
+     * party provider (eg. a payment has occurred, etc).</p>
      * <p>Note: You can either use this method standalone (eg. by only providing a machine code/device identifier)
      * or together with Cryptolens Licensing module (which requires productId and optionally keyid to be set).
      * The more information that is provided, the better insights can be provided.</p>
