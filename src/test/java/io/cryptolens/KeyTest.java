@@ -2,6 +2,7 @@ package io.cryptolens;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import io.cryptolens.internal.BasicResult;
 import io.cryptolens.methods.Helpers;
 import io.cryptolens.methods.Key;
 import io.cryptolens.models.*;
@@ -145,6 +146,22 @@ public class KeyTest
         }
 
         assertTrue(true);
+
+    }
+
+    public void testExtendLicense() throws Exception {
+
+        init();
+
+        String auth = APIKey.get("extendlicense");
+
+        APIError error = new APIError();
+
+        ExtendLicenseModel model = new ExtendLicenseModel(3349, "ICVLD-VVSZR-ZTICT-YKGXL",1);
+        model.LicenseServerUrl = "https://api.cryptolens.io";
+        boolean result = Key.ExtendLicense(auth, model , error);
+
+        assertTrue(result);
 
     }
 

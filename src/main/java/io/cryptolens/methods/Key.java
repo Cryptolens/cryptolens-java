@@ -260,4 +260,38 @@ public class Key {
 
         return HelperMethods.SendRequestToWebAPI("key/createtrialkey", model, extraParams, CreateKeyResult.class, error);
     }
+
+    /**
+     * This method will extend a license by a certain amount of days. If the key algorithm in the product is SKGL,
+     * the key string will be changed if necessary. Otherwise, if SKM15 is used, the key will stay the same.
+     * More about the way this method works in Remarks.
+     * @param token The access token with 'CreateTrialKey' permission.
+     * @param model Method parameters.
+     * @param error The error object whose Message field will be populated if an error has occurred. Please initialize
+     *              this parameter, i.e. define <code>APIError error = new APIError();</code> and then pass
+     *              <code>error</code> into this parameter.
+     * @return True if successful and false otherwise.
+     */
+    public static boolean ExtendLicense(String token, ExtendLicenseModel model, APIError error) {
+        Map<String, String> extraParams = new HashMap<>();
+        extraParams.put("token", token);
+
+        BasicResult result = HelperMethods.SendRequestToWebAPI("key/extendlicense", model, extraParams, BasicResult.class, error);
+
+        if (result == null || result.result == 1) {
+            if (result != null) {
+                if (error != null) {
+                    error.message = result.message;
+                    error.errorType = ErrorType.WebAPIError;
+                }
+            } else {
+                if (error != null) {
+                    error.errorType = ErrorType.WebAPIError;
+                }
+            }
+            return false;
+        }
+
+        return true;
+    }
 }
